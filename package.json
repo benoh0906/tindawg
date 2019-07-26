@@ -1,0 +1,29 @@
+{
+  "name": "tindawg",
+  "version": "1.0.0",
+  "description": "Mating App for Dog",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benoh0906/tindawg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benoh0906/tindawg/issues"
+  },
+  "homepage": "https://github.com/benoh0906/tindawg#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.6.6"
+  }
+}
