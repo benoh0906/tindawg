@@ -1,14 +1,14 @@
-const express= require("express")
-const methodOverride = require("method-override")
-const bodyParser = require("body-parser")
+const express        = require("express");
+const methodOverride = require("method-override");
+const bodyParser     = require("body-parser");
 const session        = require("express-session");
-const app = express()
+const app            = express()
 
 require("./db/db.js")
 
 
-const dogsController=require("./controllers/dogs")
-const usersController=require("./controllers/users")
+const dogsController  = require("./controllers/dogs");
+const usersController = require("./controllers/users");
 
 
 app.use(session({
@@ -18,17 +18,19 @@ app.use(session({
   }));
 
 
-app.use(bodyParser.urlencoded({extended:false}))
-app.use(methodOverride('_method'));
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(methodOverride("_method"));
 
-app.use("/dogs/", dogsController)
-app.use("/auth",usersController)
-app.use(express.static("public"))
+app.use("/dogs/", dogsController);
+app.use("/users/",usersController);
+app.use(express.static("public"));
 
 app.get("/",(req,res)=>{
-    res.render('index.ejs')
-})
+    res.render("index.ejs", {
+        message = req.session.message
+    })
+});
 
 app.listen(3000, ()=>{
-    console.log("Listening on port 3000")
+    console.log("Listening on port 3000");
 })
