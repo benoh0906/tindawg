@@ -4,7 +4,21 @@ const bcrypt  = require("bcryptjs");
 const User    = require("../models/users");
 const Dog     = require("../models/dogs");
 
+router.get('/',(req,res)=>{
+    if(req.session.logged === true){
+        req.session.authorIndexView+=1;
+    }
 
+    User.find({},(err,foundUser)=>{
+        try{
+            res.render('users/index.ejs',{
+                users: foundUser
+            })
+        } catch(err){
+            res.send(err)
+        }
+    })
+})
 
 router.post("/login", async (req, res) => {
     try {

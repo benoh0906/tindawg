@@ -21,16 +21,17 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(methodOverride("_method"));
 
-app.use("/dogs/", dogsController);
-app.use("/users/",usersController);
+app.use("/dogs", dogsController);
+app.use("/users",usersController);
 app.use(express.static("public"));
 
 app.get("/",(req,res)=>{
     res.render("index.ejs", {
-        message = req.session.message
+        message : req.session.message
     })
 });
 
 app.listen(3000, ()=>{
     console.log("Listening on port 3000");
 })
+
