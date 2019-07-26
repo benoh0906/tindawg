@@ -7,22 +7,35 @@
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-
+      <header>
         <h1>User Details</h1>
-        <h2>
+        
+      </header>
+
+
         <nav>
           <ul>
             <li>
               <a href="/">Home</a>
             </li>
-
         </nav>
 
+
+      <main>
       <form action="/users/logout" method="GET">
         <button type='submit'>Logout</button>
       </form>
       
-    
+        <h2>List of Users</h2>
+        <ul>
+            <% for(let i = 0; i < users.length; i++){ %>
+                <li>
+                    <a href="/users/<%=users[i]._id%>"><%=users[i].username%></a>
+                </li>
+            <% } %>
+        </ul>
+
+      </main>    
 
     </body>
 </html>
