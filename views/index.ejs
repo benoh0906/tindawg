@@ -1,12 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-    </head>
-    <body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <h1>Tindawg</h1>
+    </header>
+    <main>
 
-    </body>
+      <h2>Login</h2>
+      <form action="/users/login" method="POST">
+        <input type="text" name="username">
+        <input type="password" name='password'>
+        <button type='submit'>Login</button>
+      </form>
+
+      <h2>Register</h2>
+      <form action="/user/register" method="POST">
+        <input type="text" name="username">
+        <input id="pwInput" type="password" name='password'>
+        <input id="pwVal" type="password" name='password'>
+        <input type="email" name="email">
+        <input type="phone" name="phone">
+        <input type="location" name="location">
+        <button type='submit'>Register</button>
+      </form>
+
+    </main>
+  </body>
 </html>
