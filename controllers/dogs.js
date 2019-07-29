@@ -88,6 +88,32 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+//edit
+router.get('/:id/edit', (req, res)=>{
+    Dog.findById(req.params.id, (err, foundDog)=>{
+      if(err){
+        res.send(err);
+      } else {
+        res.render('dogs/edit.ejs', {
+          dog: foundDog
+        });
+      }
+  
+    });
+  });
 
 
+router.put('/:id', async (req, res)=>{
+
+    try{
+        const editDog = await Dog.findByIdAndUpdate(req.params.id, req.body)
+        const findUserWithDog = await User.findOne({'dogs':req.params.id})
+    
+        res.redirect(`/users/${findUserWithDog._id}`)
+        
+    } catch(err){
+        res.send(err)
+    }
+});
+  
 module.exports = router;
