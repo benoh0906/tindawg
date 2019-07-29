@@ -7,16 +7,7 @@
   <body>
     <header>
       <h1><%=dog.name%> of <%=user.name%></h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/dogs">Dogs Index</a>
-          </li>
-        </ul>
-      </nav>
+        <%- include ../partials/nav.ejs%> 
     </header>
     <main>
       <section>

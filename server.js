@@ -1,6 +1,7 @@
 const express        = require("express");
 const methodOverride = require("method-override");
 const bodyParser     = require("body-parser");
+const {check, validationResult} = require('express-validator/check')
 const session        = require("express-session");
 const app            = express()
 

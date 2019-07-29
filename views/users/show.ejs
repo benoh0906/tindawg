@@ -7,21 +7,7 @@
   <body>
     <header>
       <h1>Show Page for <%=user.name%></h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/users">User Index</a>
-          </li>
-          <li>
-            <form action="/users/logout" method="GET">
-                <button type="submit">Logout</button>
-            </form>   
-          </li>       
-        </ul>
-      </nav>
+      <%- include ../partials/nav.ejs%> 
     </header>
     <main>
       <section>

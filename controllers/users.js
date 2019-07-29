@@ -51,23 +51,32 @@ router.post("/login", async (req, res) => {
 
 router.post("/register", async (req, res) => {
     const password = req.body.password;
-    const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-    
-    console.log(hashedPassword);
+    const passConfirm = req.body.pwConfirm;
 
-    req.body.password = hashedPassword;
+    if( password === passConfirm){
+        
+            const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+            
+            console.log(hashedPassword);
+        
+            req.body.password = hashedPassword;
+        
+            try {
+                const createdUser = await User.create(req.body);
+                console.log(createdUser, "<--- Created User");
+        
+                req.session.userId = createdUser._id;
+                req.session.username = createdUser.username;
+                req.session.logged = true;
+                res.redirect("/");
+             } catch (err) {
+                 res.send(err);
+             }
 
-    try {
-        const createdUser = await User.create(req.body);
-        console.log(createdUser, "<--- Created User");
-
-        req.session.userId = createdUser._id;
-        req.session.username = createdUser.username;
-        req.session.logged = true;
-        res.redirect("/users");
-     } catch (err) {
-         res.send(err);
-     }
+    } else{
+        alert('Password does not match!')
+        res.redirect("/")
+    }
 });
 
 router.get("/:id/edit", async (req, res) => {
