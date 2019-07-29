@@ -26,11 +26,7 @@
         Breed:<%=dog.breed%> <br/>
         Age: <%=dog.age%>
       </section>
-      <section>
-          <form action="/dogs/<%=dog._id%>?_method=DELETE" method="post">
-              <input type="submit" value="Delete Dog"/>
-          </form>
-      </section>
+
       <section>
           <a href="/dogs/<%=dog._id%>/edit">Edit</a>
       </section>
