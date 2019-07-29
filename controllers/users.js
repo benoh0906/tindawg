@@ -35,12 +35,12 @@ router.post("/login", async (req, res) => {
         
         } else {
             req.session.message = "Username or password incorrect";
-            res.redirect(`/users`);
+            res.redirect("/");
         } 
         
     } else {
         req.session.message = "Username or password incorrect";
-        res.redirect("/users");
+        res.redirect("/");
     }
     } catch(err) {
         res.send(err);
@@ -89,9 +89,9 @@ router.get('/:id', (req, res) => {
     User.findById(req.params.id)
     .populate('dogs')
     .exec((err, foundUser) => {
-      console.log(foundUser, ' foundAuthor in authors show page')
+      console.log(foundUser, ' foundUser in users show page')
   
-      res.render('authors/show.ejs', {
+      res.render('users/show.ejs', {
         user: foundUser
       })
     })

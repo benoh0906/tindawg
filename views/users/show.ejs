@@ -29,7 +29,7 @@
         <h2>Dogs owned by this user:</h2>
         <ul>
           <% for (let i = 0; i < user.dogs.length; i++) {%>
-            <li><a href="/dogs/<%=user.dogs[i]._id%>"><%=user.dogs[i].title%></a></li>
+            <li><a href="/dogs/<%=user.dogs[i]._id%>"><%=user.dogs[i].name%></a></li>
           <%}%>
         </ul>
 
