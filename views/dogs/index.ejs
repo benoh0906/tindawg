@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dogs Index</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+      <header>
+        <h1>Tindawg</h1>
+      </header>
+
+      <nav>
+        <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <form action="/users/logout" method="GET">
+            <button type='submit'>Logout</button>
+          </form>
+        </li>
+      </nav>
+
+      <main>
+        <h2>Dog List</h2>
+        <ul>
+            <% for(let i = 0; i < dogs.length; i++){ %>
+                <li>
+                    <a href="/dogs/<%=dogs[i]._id%>"><img src="<%=dogs.img"/><br/><%=dogs[i].name%></a>
+                </li>
+            <% } %>
+        </ul>
+      </main>    
+
+    </body>
+</html>
