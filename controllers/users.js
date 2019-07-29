@@ -72,29 +72,49 @@ router.post("/register", async (req, res) => {
 
 
 
-router.get("/logout", (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.redirect("/");
-        }
-    })
+router.get("/logout", async (req, res) => {
+    try{
+        const loggingOut = await req.session.destroy()
+        res.redirect("/")
+    } catch(err){
+        res.send(err);
+    }
+
+
+    // req.session.destroy((err) => {
+    //     if (err) {
+    //         res.send(err);
+    //     } else {
+    //         res.redirect("/");
+    //     }
+    // })
 });
 
 
 // show route
-router.get('/:id', (req, res) => {
-    console.log(req.params, " params in the show route")
-    User.findById(req.params.id)
-    .populate('dogs')
-    .exec((err, foundUser) => {
-      console.log(foundUser, ' foundUser in users show page')
+router.get('/:id', async (req, res) => {
+
+    try{
+        const findUser = await User.findById(req.params.id).populate('dogs').exec();
+        res.render("users/show.ejs",{
+            user: findUser
+        });
+    } catch (err){
+        res.send(err)
+    }
+
+
+
+
+    // User.findById(req.params.id)
+    // .populate('dogs')
+    // .exec((err, foundUser) => {
+    //   console.log(foundUser, ' foundUser in users show page')
   
-      res.render('users/show.ejs', {
-        user: foundUser
-      })
-    })
+    //   res.render('users/show.ejs', {
+    //     user: foundUser
+    //   })
+    // })
   });
 
 module.exports = router;
