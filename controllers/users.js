@@ -8,11 +8,10 @@ router.get('/',(req,res)=>{
     if(req.session.logged === true){
         req.session.authorIndexView+=1;
     }
-
     User.find({},(err,foundUser)=>{
         try{
             res.render('users/index.ejs',{
-                users: foundUser
+                user: foundUser
             })
         } catch(err){
             res.send(err)
@@ -70,7 +69,16 @@ router.post("/register", async (req, res) => {
      }
 });
 
-
+router.get("/:id/edit", async (req, res) => {
+    try {
+        const findUser = await User.findById(req.params.id);
+        res.render("users/edit.ejs", {
+            user: findUser
+        })
+    } catch(err){
+        res.send(err);
+    }
+});
 
 router.get("/logout", async (req, res) => {
     try{
@@ -114,8 +122,18 @@ router.delete('/:id', async (req, res) => {
   
   
 });
-  
 
+// Edit Page
+
+
+router.put("/:id", async (req, res) => {
+    try {
+        const editUser = await User.findByIdAndUpdate(req.params.id, req.body);
+        res.redirect("/users/" + req.params.id);
+    } catch(err){
+        send(err);
+    }
+}); 
 
 // show route
 router.get('/:id', async (req, res) => {
@@ -128,7 +146,7 @@ router.get('/:id', async (req, res) => {
     } catch (err){
         res.send(err)
     }
-
+});
 
 
 
@@ -141,6 +159,6 @@ router.get('/:id', async (req, res) => {
     //     user: foundUser
     //   })
     // })
-  });
+
 
 module.exports = router;

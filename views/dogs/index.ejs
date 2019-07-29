@@ -4,7 +4,7 @@
         <title>Dogs Index</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
     </head>
     <body>
       <header>
@@ -26,9 +26,9 @@
       <main>
         <h2>Dog List</h2>
         <ul>
-            <% for(let i = 0; i < dogs.length; i++){ %>
+            <% for(let i = 0; i < dog.length; i++){ %>
                 <li>
-                    <a href="/dogs/<%=dogs[i]._id%>"><%=dogs[i].name%></a>
+                    <a href="/dogs/<%=dog[i]._id%>"><%=dog[i].name%></a>
                 </li>
             <% } %>
         </ul>

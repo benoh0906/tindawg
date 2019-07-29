@@ -22,14 +22,14 @@
 
       <main>
       <form action="/users/logout" method="GET">
-        <button type='submit'>Logout</button>
+        <button type="submit">Logout</button>
       </form>
       
         <h2>List of Users</h2>
         <ul>
-            <% for(let i = 0; i < users.length; i++){ %>
+            <% for(let i = 0; i < user.length; i++){ %>
                 <li>
-                    <a href="/users/<%=users[i]._id%>"><%=users[i].username%></a>
+                    <a href="/users/<%=user[i]._id%>"><%=user[i].username%></a>
                 </li>
             <% } %>
         </ul>

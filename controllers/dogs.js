@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
         const foundDogs = await Dog.find({});
         console.log(foundDogs, "<---- foundDogs");
         res.render("dogs/index.ejs",{
-            dogs: foundDogs
+            dog: foundDogs
         }
         );
     } catch (err) {
