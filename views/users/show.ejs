@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <h1>Show Page for <%=user.name%></h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/users">User Index</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h2>User Attributes:</h2>
+        <ul>
+          <li>Name: <%=user.name%></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Dogs owned by this user:</h2>
+        <ul>
+          <% for (let i = 0; i < user.dogs.length; i++) {%>
+            <li><a href="/dogs/<%=user.dogs[i]._id%>"><%=user.dogs[i].title%></a></li>
+          <%}%>
+        </ul>
+
+      </section>
+
+        <a href="/dogs/new"> Add a dog </a>
+
+
+      <section>
+          <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+              <input type="submit" value="Delete User"/>
+          </form>
+      </section>
+      <section>
+          <a href="/users/<%=user._id%>/edit">Edit</a>
+      </section>
+    </main>
+  </body>
+</html>

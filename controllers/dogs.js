@@ -6,7 +6,6 @@ const Dog     = require("../models/dogs");
 
 module.exports = router;
 
-<<<<<<< HEAD
 //dog index
 router.get('/', (req, res)=>{
     console.log(req.session, ' req.session in index or dogs')
@@ -42,11 +41,11 @@ router.post('/', (req, res)=>{
         res.send(err);
       } else {
         console.log(req.body)
-        User.findById(req.body.userId, (err, foundUser) => {
+        User.findById(req.session.userId, (err, foundUser) => {
           console.log(foundUser, ' <-- foundUser in dog create route')
           foundUser.dogs.push(createdDog);
           foundUser.save((err, savedUser) => {
-            res.redirect('/dogs');
+            res.redirect(`/users/${req.session.userId}`);
           });
         });
       }
@@ -86,5 +85,3 @@ router.get('/:id', (req, res)=>{
   
   
   
-=======
->>>>>>> e58442cd5e6ea5dd6927d2bb95ddd8e05bf40e98

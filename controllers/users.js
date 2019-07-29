@@ -31,11 +31,11 @@ router.post("/login", async (req, res) => {
             req.session.userId = foundUser._id;
             req.session.username = foundUser.username;
             req.session.logged = true;
-            res.redirect("/users");
+            res.redirect(`/users/${req.session.userId}`);
         
         } else {
             req.session.message = "Username or password incorrect";
-            res.redirect("/users");
+            res.redirect(`/users`);
         } 
         
     } else {
@@ -81,5 +81,20 @@ router.get("/logout", (req, res) => {
         }
     })
 });
+
+
+// show route
+router.get('/:id', (req, res) => {
+    console.log(req.params, " params in the show route")
+    User.findById(req.params.id)
+    .populate('dogs')
+    .exec((err, foundUser) => {
+      console.log(foundUser, ' foundAuthor in authors show page')
+  
+      res.render('authors/show.ejs', {
+        user: foundUser
+      })
+    })
+  });
 
 module.exports = router;
