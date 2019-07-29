@@ -18,7 +18,7 @@
         </li>
         <li>
           <form action="/users/logout" method="GET">
-            <button type='submit'>Logout</button>
+            <button type="submit">Logout</button>
           </form>
         </li>
       </nav>
@@ -28,7 +28,7 @@
         <ul>
             <% for(let i = 0; i < dogs.length; i++){ %>
                 <li>
-                    <a href="/dogs/<%=dogs[i]._id%>"><img src="<%=dogs.img"/><br/><%=dogs[i].name%></a>
+                    <a href="/dogs/<%=dogs[i]._id%>"><img src="<%=dogs.img%>"/><br/><%=dogs[i].name%></a>
                 </li>
             <% } %>
         </ul>
