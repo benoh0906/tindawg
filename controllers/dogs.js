@@ -49,9 +49,50 @@ router.post('/', (req, res)=>{
           });
         });
       }
-  
     });
   });
+
+//delete dogs
+
+
+router.delete('/:id', async (req, res)=>{
+    // when we delete an article, we want to remove that
+    // article from the authors array
+    try{
+    const findRemoveDog = await Dog.findByIdAndRemove(req.params.id)
+    const findUserWithDog = await User.findOne({'dogs':req.params.id})
+    
+    findUserWithDog.dogs.remove(req.params.id)
+    findUserWithDog.save()
+    
+    res.redirect(`/users/${req.params.id}`)
+    
+    } catch (err){
+        res.send(err)
+    }
+
+
+    // Article.findByIdAndRemove(req.params.id, (err, response)=>{
+    //   Author.findOne({'articles': req.params.id}, (err, foundAuthor) => {
+    //         if(err){
+    //           res.send(err);
+    //         } else {
+    //           console.log(foundAuthor, ' foundauthor in delete');
+    //           foundAuthor.articles.remove(req.params.id);
+    //           // since we're dealing with a document
+    //           // we have to save it
+    //           foundAuthor.save((err, updatedAuthor) => {
+    //             console.log(updatedAuthor, '<-- updatedAuthor')
+    //             res.redirect('/articles');
+    //           });
+    //         }
+    //   })
+  
+  
+    // });
+  });
+
+
 
 //show dogs
 

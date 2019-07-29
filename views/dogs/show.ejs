@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <h1><%=dog.name%> of <%=user.name%></h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/dogs">Dogs Index</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        Name: <%=dog.name%> <br/>
+        Owner: <%=user.name%> <br/>
+        Gender: <%=dog.gender%> <br/>
+        Breed:<%=dog.breed%> <br/>
+        Age: <%=dog.age%>
+      </section>
+      <section>
+          <form action="/dogs/<%=dog._id%>?_method=DELETE" method="post">
+              <input type="submit" value="Delete Dog"/>
+          </form>
+      </section>
+      <section>
+          <a href="/dogs/<%=dog._id%>/edit">Edit</a>
+      </section>
+
+    </main>
+  </body>
+</html>
