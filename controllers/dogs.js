@@ -6,6 +6,7 @@ const Dog     = require("../models/dogs");
 
 module.exports = router;
 
+<<<<<<< HEAD
 //dog index
 router.get('/', (req, res)=>{
     console.log(req.session, ' req.session in index or dogs')
@@ -85,3 +86,5 @@ router.get('/:id', (req, res)=>{
   
   
   
+=======
+>>>>>>> e58442cd5e6ea5dd6927d2bb95ddd8e05bf40e98
