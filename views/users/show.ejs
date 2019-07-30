@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -33,6 +33,23 @@
                     <button type="submit">Delete</button>
                 </form>
                 <a href="/dogs/<%=user.dogs[i]._id%>/edit">Edit</a>
+
+            </li>
+
+          <%}%>
+        </ul>
+      </section>
+      <section>
+        Requests:
+        <ul>
+            <% for (let i = 0; i < request.requests.length; i++) {%>
+            <li>
+                Name: <%=request.requests[i].name%><br/>
+                Username: <%=request.requests[i].username%><br/>
+                Email: <%=request.requests[i].email%><br/>
+                Phone: <%=request.requests[i].phone%><br/>
+                Location: <%=request.requests[i].location%>
+                
 
             </li>
 

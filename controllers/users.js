@@ -55,9 +55,6 @@ router.post("/login", async (req, res) => {
 router.post("/register", 
 // [ check('confirmPassword', 'Passwords do not match').custom((value, {req}) => (value === req.body.password)),
 // ],
-
-
-
 async (req, res) => {
     const password = req.body.password;
     const passConfirm = req.body.pwConfirm;
@@ -157,8 +154,10 @@ router.get('/:id', async (req, res) => {
 
     try{
         const findUser = await User.findById(req.params.id).populate('dogs').exec();
+        const findReq = await User.findById(req.params.id).populate('requests').exec();
         res.render("users/show.ejs",{
             user: findUser,
+            request:findReq,
             isLogged: req.session.logged,
             username: req.session.username,
             userId : req.session.userId
@@ -167,6 +166,23 @@ router.get('/:id', async (req, res) => {
         res.send(err)
     }
 });
+
+
+//make requests
+
+router.post("/:id/request", async (req, res) => {
+    try {
+        const requestFrom = await User.findById(req.session.userId);
+        const requestTo = await User.findById(req.params.id);
+        requestTo.requests.push(requestFrom)
+        requestTo.save();
+        console.log(requestTo, "<--- requestTo")
+        res.redirect(`/dogs/`);
+    } catch (err) {
+        res.send(err);
+    } 
+  });
+
 
 
 

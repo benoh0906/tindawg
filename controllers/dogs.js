@@ -91,7 +91,8 @@ router.get("/:id", async (req, res) => {
             dog: dog,
             userId : req.session.userId,
             isLogged: req.session.logged,
-            username: req.session.username
+            username: req.session.username,
+            name: req.session.name
         });
     } catch(err) {
         console.log(err);
