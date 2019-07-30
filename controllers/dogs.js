@@ -11,7 +11,10 @@ router.get("/", async (req, res) => {
         const foundDogs = await Dog.find({});
         console.log(foundDogs, "<---- foundDogs");
         res.render("dogs/index.ejs",{
-            dog: foundDogs
+            dog: foundDogs,
+            isLogged: req.session.logged,
+            username: req.session.username,
+            userId : req.session.userId
         }
         );
     } catch (err) {
@@ -26,7 +29,10 @@ router.get("/new", async (req, res) => {
     try {
         const allUsers = await User.find({});
         res.render("dogs/new.ejs", {
-            users: allUsers
+            users: allUsers,
+            userId : req.session.userId,
+            isLogged: req.session.logged,
+            username: req.session.username
         });
     } catch (err) {
         res.send(err);
@@ -81,7 +87,10 @@ router.get("/:id", async (req, res) => {
                 } 
         res.render("dogs/show.ejs", {
             user: findUser,
-            dog: dog
+            dog: dog,
+            userId : req.session.userId,
+            isLogged: req.session.logged,
+            username: req.session.username
         });
     } catch(err) {
         console.log(err);
@@ -95,7 +104,10 @@ router.get('/:id/edit', (req, res)=>{
         res.send(err);
       } else {
         res.render('dogs/edit.ejs', {
-          dog: foundDog
+          dog: foundDog,
+          userId : req.session.userId,
+          isLogged: req.session.logged,
+          username: req.session.username
         });
       }
   

@@ -27,7 +27,7 @@
         <label>Breed: </label><input type="text" value="<%=dog.breed%>" name="breed"/>
         <label>Age: </label><input type="number" value="<%=dog.age%>" min="0" name="age"/><br/>
         <label>Image URL: </label><input type="text" value="<%=dog.img%>" name="img"/><br/>
-        <label>Description: </label><textarea type="text" value="<%=dog.description%>" name="description"></textarea><br/>
+        <label>Description: </label><textarea type="text" name="description"><%=dog.description%></textarea><br/>
         <input type="submit" value="Update Dog"/>
       </form>
     </main>

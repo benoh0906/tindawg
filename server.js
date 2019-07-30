@@ -22,6 +22,15 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(methodOverride("_method"));
 
+app.use((req,res,next)=>{
+    if(!req.session.initialised){
+        req.session.initialised = true
+        req.session.isLogged = false
+        req.session.username = ''
+        req.session. userId = ''
+    }
+    next()
+})
 app.use("/dogs", dogsController);
 app.use("/users",usersController);
 app.use(express.static("public"));

@@ -11,7 +11,10 @@ router.get('/',(req,res)=>{
     User.find({},(err,foundUser)=>{
         try{
             res.render('users/index.ejs',{
-                user: foundUser
+                user: foundUser,
+                isLogged: req.session.logged,
+                username: req.session.username,
+                userId : req.session.userId
             })
         } catch(err){
             res.send(err)
@@ -84,7 +87,10 @@ router.get("/:id/edit", async (req, res) => {
     try {
         const findUser = await User.findById(req.params.id);
         res.render("users/edit.ejs", {
-            user: findUser
+            user: findUser,
+            isLogged: req.session.logged,
+            username: req.session.username,
+            userId : req.session.userId
         })
     } catch(err){
         res.send(err);
@@ -152,7 +158,10 @@ router.get('/:id', async (req, res) => {
     try{
         const findUser = await User.findById(req.params.id).populate('dogs').exec();
         res.render("users/show.ejs",{
-            user: findUser
+            user: findUser,
+            isLogged: req.session.logged,
+            username: req.session.username,
+            userId : req.session.userId
         });
     } catch (err){
         res.send(err)
