@@ -185,7 +185,7 @@ router.post("/:id/request", async (req, res) => {
             console.log(err, dog)
         });
         console.log(requestFrom, "<--- REQUESTING DOG")
-        // res.redirect(`/dogs/${req.body.dogId}`);
+        res.redirect(`/dogs/${req.body.dogId}`);
     } catch (err) {
         console.log(err)
     } 
