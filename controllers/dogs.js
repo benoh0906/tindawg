@@ -28,6 +28,7 @@ router.get("/", async (req, res) => {
 router.get("/new", async (req, res) => {
     try {
         const allUsers = await User.find({});
+        
         res.render("dogs/new.ejs", {
             users: allUsers,
             userId : req.session.userId,

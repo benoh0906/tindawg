@@ -12,7 +12,11 @@
         <h1>Tindawg</h1>
       </header>
 
-<%- include ../partials/nav.ejs%> 
+<%  if(isLogged===true){%>
+    <%- include ../partials/loggedInNav.ejs%>
+    <%}else{%>
+    <%- include ../partials/loggedOutNav.ejs%>
+    <%}%>
 
       <main>
         <h2>Dog List</h2>

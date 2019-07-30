@@ -27,7 +27,7 @@ app.use((req,res,next)=>{
         req.session.initialised = true
         req.session.isLogged = false
         req.session.username = ''
-        req.session. userId = ''
+        req.session.userId = ''
     }
     next()
 })
@@ -37,7 +37,8 @@ app.use(express.static("public"));
 
 app.get("/",(req,res)=>{
     res.render("index.ejs", {
-        message : req.session.message
+        message : req.session.message,
+        isLogged: req.session.isLogged
     })
 });
 

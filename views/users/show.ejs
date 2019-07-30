@@ -12,8 +12,11 @@
       <h1>Show Page for <%=user.name%></h1>
     </header>
 
-    <%- include ../partials/nav.ejs%> 
-    
+<%  if(isLogged===false){%>
+    <%- include ../partials/loggedOutNav.ejs%>
+    <%}else{%>
+    <%- include ../partials/loggedInNav.ejs%>
+    <%}%>
     <main>
       <section>
         <h2>User Attributes:</h2>
