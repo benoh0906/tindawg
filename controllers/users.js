@@ -50,8 +50,8 @@ router.post("/login", async (req, res) => {
 
 
 router.post("/register", 
-[ check('confirmPassword', 'Passwords do not match').custom((value, {req}) => (value === req.body.password)),
-],
+// [ check('confirmPassword', 'Passwords do not match').custom((value, {req}) => (value === req.body.password)),
+// ],
 
 
 
