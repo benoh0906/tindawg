@@ -3,6 +3,7 @@ const router  = express.Router();
 const bcrypt  = require("bcryptjs");
 const User    = require("../models/users");
 const Dog     = require("../models/dogs");
+const Request   = require("../models/requests");
 
 
 // Dog index
@@ -89,15 +90,22 @@ router.get("/:id", async (req, res) => {
         res.render("dogs/show.ejs", {
             user: findUser,
             dog: dog,
+
             userId : req.session.userId,
             isLogged: req.session.logged,
             username: req.session.username,
-            name: req.session.name
+            name: req.session.name,
+            location:req.session.location,
+            phone: req.session.phone,
+            email: req.session.email
+
         });
     } catch(err) {
         console.log(err);
     }
 });
+
+
 
 //edit
 router.get('/:id/edit', (req, res)=>{

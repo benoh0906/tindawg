@@ -3,6 +3,8 @@ const router  = express.Router();
 const bcrypt  = require("bcryptjs");
 const User    = require("../models/users");
 const Dog     = require("../models/dogs");
+const Request   = require("../models/requests");
+
 
 router.get('/',(req,res)=>{
     if(req.session.logged === true){
@@ -33,6 +35,9 @@ router.post("/login", async (req, res) => {
             req.session.userId = foundUser._id;
             req.session.username = foundUser.username;
             req.session.name=foundUser.name;
+            req.session.email=foundUser.email;
+            req.session.phone=foundUser.phone;
+            req.session.location=foundUser.location;
             req.session.logged = true;
             res.redirect(`/users/${req.session.userId}`);
         
@@ -151,16 +156,17 @@ router.put("/:id", async (req, res) => {
 
 // show route
 router.get('/:id', async (req, res) => {
-
     try{
         const findUser = await User.findById(req.params.id).populate('dogs').exec();
         const findReq = await User.findById(req.params.id).populate('requests').exec();
+        console.log(findReq,'<---FINDREQ HERE')
         res.render("users/show.ejs",{
             user: findUser,
             request:findReq,
+
             isLogged: req.session.logged,
             username: req.session.username,
-            userId : req.session.userId
+            userId : req.session.userId,
         });
     } catch (err){
         res.send(err)
@@ -172,14 +178,16 @@ router.get('/:id', async (req, res) => {
 
 router.post("/:id/request", async (req, res) => {
     try {
-        const requestFrom = await User.findById(req.session.userId);
+        const requestFrom = await Request.create(req.body)
         const requestTo = await User.findById(req.params.id);
         requestTo.requests.push(requestFrom)
-        requestTo.save();
-        console.log(requestTo, "<--- requestTo")
-        res.redirect(`/dogs/`);
+        requestTo.save((err, dog) => {
+            console.log(err, dog)
+        });
+        console.log(requestFrom, "<--- REQUESTING DOG")
+        // res.redirect(`/dogs/${req.body.dogId}`);
     } catch (err) {
-        res.send(err);
+        console.log(err)
     } 
   });
 

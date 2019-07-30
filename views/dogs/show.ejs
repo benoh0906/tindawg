@@ -27,7 +27,15 @@
         Age: <%=dog.age%> <br/>
         Description: <%=dog.description%>
       </section>
-        <form action="/users/<%=user._id%>/request" method="POST">
+        <form id="requestingBox" action="/users/<%=user._id%>/request" method="POST">
+            <input class="hideVal" type="text" name="dogId" value=<%=dog._id%>>
+            <input class="hideVal" type="text" name="name" value=<%=dog.name%>>
+            <input class="hideVal" type="text" name="requestorName" value=<%=name%>>
+            <input class="hideVal" type="text" name="requestorEmail" value=<%=email%>>
+            <input class="hideVal" type="text" name="requestorPhone" value=<%=phone%>>
+            <input class="hideVal" type="text" name="requestorLocation" value=<%=location%>>
+            <input class="hideVal" type="text" name="requestorUsername" value=<%=username%>>
+
             <button type="submit">Request</button>
         </form>
     </main>

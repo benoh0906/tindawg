@@ -34,6 +34,7 @@
                 </form>
                 <a href="/dogs/<%=user.dogs[i]._id%>/edit">Edit</a>
 
+
             </li>
 
           <%}%>
@@ -44,12 +45,14 @@
         <ul>
             <% for (let i = 0; i < request.requests.length; i++) {%>
             <li>
-                Name: <%=request.requests[i].name%><br/>
-                Username: <%=request.requests[i].username%><br/>
-                Email: <%=request.requests[i].email%><br/>
-                Phone: <%=request.requests[i].phone%><br/>
-                Location: <%=request.requests[i].location%>
-                
+                To -<br/> <%=request.requests[i].name%>  <br/>
+                <br/>
+                From - <br/>
+                Owner: <%=request.requests[i].requestorName%><br/>
+                Username: <%=request.requests[i].requestorUsername%><br/>
+                Email: <%=request.requests[i].requestorEmail%><br/>
+                Phone: <%=request.requests[i].requestorPhone%><br/>
+                Location: <%=request.requests[i].requestorLocation%>
 
             </li>
 

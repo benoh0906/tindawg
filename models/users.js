@@ -12,8 +12,8 @@ const userSchema = new mongoose.Schema({
         ref: 'Dog'
     }],
     requests: [{
-        type:mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Request'
     }]
 });
 
