@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <h1><%=dog.name%> of <%=user.name%></h1>
+      <h1><a href="/dogs">Tindawg</a></h1>
     </header>
 
 <%  if(isLogged===true){%>
@@ -17,6 +17,8 @@
     <%}else{%>
     <%- include ../partials/loggedOutNav.ejs%>
     <%}%>
+
+      <h2><%=dog.name%> of <%=user.name%></h1>
     <main>
       <section>
         <img class="show" src="<%=dog.img%>"/><br/>

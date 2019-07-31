@@ -58,4 +58,7 @@ img.show {
 
 .flexbox {
     padding: 15px;
+
+.hideVal {
+    display: none;
 }
