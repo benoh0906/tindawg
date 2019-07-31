@@ -125,6 +125,24 @@ router.get("/logout", async (req, res) => {
 });
 
 
+//delete Request
+
+router.delete('/requests/:id', async (req, res) => {
+    try {
+      const findRemoveReq = await Request.findOneAndDelete({_id: req.params.id});
+      const findUserWithReq = await User.findOne({'requests':req.params.id})
+
+      findUserWithReq.requests.remove(req.params.id)
+      findRemoveReq.save()
+        res.redirect(`/users/${req.session.userId}`);
+    } catch(err){
+        console.log(err)
+      res.send(err)
+    }
+});
+
+
+
 //delete route
 
 router.delete('/:id', async (req, res) => {
@@ -140,6 +158,9 @@ router.delete('/:id', async (req, res) => {
       res.send(err)
     }
 });
+
+
+
 
 // Edit Page
 
