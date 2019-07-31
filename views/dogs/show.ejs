@@ -19,13 +19,15 @@
     <%}%>
     <main>
       <section>
-        <img src="<%=dog.img%>"/> <br/>
-        Name: <%=dog.name%> <br/>
-        Owner: <%=user.name%> <br/>
-        Gender: <%=dog.gender%> <br/>
-        Breed: <%=dog.breed%> <br/>
-        Age: <%=dog.age%> <br/>
-        Description: <%=dog.description%>
+        <img class="show" src="<%=dog.img%>"/><br/>
+        <div class="flex-container">
+        <li class="flexbox"><u>Name</u>: <b><%=dog.name%></b></li>
+        <li class="flexbox"><u>Owner</u>: <b><%=user.name%></b></li>
+        <li class="flexbox"><u>Gender</u>: <b><%=dog.gender%></b></li>
+        <li class="flexbox"><u>Breed</u>: <b><%=dog.breed%></b></li>
+        <li class="flexbox"><u>Age</u>: <b><%=dog.age%></b></li>
+        <li class="flexbox"><u>Description</u>: <b><%=dog.description%></b></li>
+        </div>
       </section>
         <form id="requestingBox" action="/users/<%=user._id%>/request" method="POST">
             <input class="hideVal" type="text" name="dogId" value=<%=dog._id%>>
