@@ -38,6 +38,7 @@ router.post("/login", async (req, res) => {
             req.session.email=foundUser.email;
             req.session.phone=foundUser.phone;
             req.session.location=foundUser.location;
+            req.session.password=foundUser.password;
             req.session.logged = true;
             res.redirect(`/users/${req.session.userId}`);
         
@@ -62,7 +63,7 @@ router.post("/register",
 // ],
 async (req, res) => {
     const password = req.body.password;
-    const passConfirm = req.body.pwConfirm;
+    const passConfirm = req.body.confirmPassword;
     if (password !== passConfirm){
         req.session.message = "Passwords don't match"
         res.redirect("/")
@@ -96,7 +97,8 @@ router.get("/:id/edit", async (req, res) => {
             user: findUser,
             isLogged: req.session.logged,
             username: req.session.username,
-            userId : req.session.userId
+            userId : req.session.userId,
+            password: req.session.password
         })
     } catch(err){
         res.send(err);
@@ -125,25 +127,17 @@ router.get("/logout", async (req, res) => {
 //delete route
 
 router.delete('/:id', async (req, res) => {
-
     try {
-  
       const deletedUser = await User.findOneAndDelete({_id: req.params.id});
-  
-  
       const deletedDogs = await Dog.remove({
           _id: {
             $in: deletedUser.dogs
           }
         });
-  
         res.redirect('/');
-
     } catch(err){
       res.send(err)
     }
-  
-  
 });
 
 // Edit Page
