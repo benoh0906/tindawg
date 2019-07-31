@@ -36,3 +36,8 @@ nav a {
     height:100%;
     object-fit: cover;
 }
+
+
+.hideVal{
+    display: none;
+}

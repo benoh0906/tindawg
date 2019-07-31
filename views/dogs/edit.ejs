@@ -9,11 +9,11 @@
   </head>
   <body>
     <header>
-      <h1>Edit <%=dog.name%>'s Info</h1>
-
+      <h1><a href="/dogs">Tindawg</a></h1>
     <%- include ../partials/loggedInNav.ejs%> 
       
     </header>
+      <h1>Edit <%=dog.name%>'s Info</h1>
     <main>
       <h2>Dog's Attributes:</h2>
       <form action="/dogs/<%=dog._id%>?_method=PUT" method="post">
