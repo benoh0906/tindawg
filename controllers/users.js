@@ -41,7 +41,7 @@ router.post("/login", async (req, res) => {
             req.session.password=foundUser.password;
             req.session.logged = true;
             res.redirect(`/users/${req.session.userId}`);
-        
+            req.session.message = ""
         } else {
             req.session.message = "Username or password incorrect";
             res.redirect("/");
@@ -81,6 +81,7 @@ async (req, res) => {
             req.session.userId = createdUser._id;
             req.session.username = createdUser.username;
             req.session.logged = true;
+            req.session.message = "Account Created"
             res.redirect("/");
          } catch (err) {
              res.send(err);
@@ -159,6 +160,7 @@ router.get('/:id', async (req, res) => {
         const findUser = await User.findById(req.params.id).populate('dogs').exec();
         const findReq = await User.findById(req.params.id).populate('requests').exec();
         console.log(findReq,'<---FINDREQ HERE')
+        
         res.render("users/show.ejs",{
             user: findUser,
             request:findReq,

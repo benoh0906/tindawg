@@ -33,17 +33,46 @@
         <li class="flex-box"><u>Description</u>: <b><%=dog.description%></b></li>
         </div>
       </section>
-        <form id="requestingBox" action="/users/<%=user._id%>/request" method="POST">
-            <input class="hideVal" type="text" name="dogId" value=<%=dog._id%>>
-            <input class="hideVal" type="text" name="name" value=<%=dog.name%>>
-            <input class="hideVal" type="text" name="requestorName" value=<%=name%>>
-            <input class="hideVal" type="text" name="requestorEmail" value=<%=email%>>
-            <input class="hideVal" type="text" name="requestorPhone" value=<%=phone%>>
-            <input class="hideVal" type="text" name="requestorLocation" value=<%=location%>>
-            <input class="hideVal" type="text" name="requestorUsername" value=<%=username%>>
 
-            <button type="submit">Request</button><br/><br/>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Send Request</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Request</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/users/<%=user._id%>/request" method="POST">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name" name="name" value=<%=dog.name%>>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">My Info:</label><br/>
+            Name<input class="form-control" type="text" name="requestorName" value=<%=name%>><br/>
+            Email<input class="form-control" type="text" name="requestorEmail" value=<%=email%>><br/>
+            Phone<input class="form-control" type="text" name="requestorPhone" value=<%=phone%>>
+            <input class="hideVal" type="text" name="dogId" value=<%=dog._id%>>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text" name="requestorMessage"></textarea>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Send Request</button>
+      </div>
         </form>
+    </div>
+  </div>
+
     </main>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
