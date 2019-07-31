@@ -107,11 +107,6 @@ img.show {
     text-shadow: 2px 2px grey;
 }
 
-/* #nav-link {
-    position: absolute;
-    top: 0;
-} */
-
 #errorMessage{
     color: red;
     font-weight: bold;
