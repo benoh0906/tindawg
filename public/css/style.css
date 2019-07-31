@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 body {
     background: linear-gradient(90deg, rgba(238,174,202,0.7) 0%, rgba(148,187,233,0.7) 100%);
 }
+=======
+>>>>>>> master
 
 h2, h3, h4 {
     text-align: center;
@@ -26,6 +29,11 @@ nav a {
     letter-spacing: 1px;
 }
 
+nav button {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 .carousel-caption {
     background:rgba(255,255,255,0.5);
     color: black;
@@ -77,4 +85,19 @@ img.show {
 
 .hideVal {
     display: none;
+}
+
+.logo, a.logo{
+    font-family: 'Baloo Da', cursive;
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#errorMessage{
+    color: red;
+    font-weight: bold;
+}
+
+#logInDiv{
 }
