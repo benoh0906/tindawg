@@ -87,3 +87,11 @@ img.show {
     text-decoration: none;
     text-transform: uppercase;
 }
+
+#errorMessage{
+    color: red;
+    font-weight: bold;
+}
+
+#logInDiv{
+}
