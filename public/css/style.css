@@ -1,7 +1,4 @@
-body, body a {
-   background-color: #4f79ff;
-   color: white;
-}
+
 
 main {
     display: flex;
@@ -58,7 +55,13 @@ img.show {
 
 .flexbox {
     padding: 15px;
+}
 
 .hideVal {
     display: none;
+}
+
+.logo{
+    font-family: 'Baloo Da', cursive;
+    color: black;
 }

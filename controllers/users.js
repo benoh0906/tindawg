@@ -63,26 +63,30 @@ router.post("/register",
 async (req, res) => {
     const password = req.body.password;
     const passConfirm = req.body.pwConfirm;
-
-
-
-    const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+    if (password !== passConfirm){
+        req.session.message = "Passwords don't match"
+        res.redirect("/")
+    } else {
+        const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+        
+        console.log(hashedPassword);
     
-    console.log(hashedPassword);
+        req.body.password = hashedPassword;
+    
+        try {
+            const createdUser = await User.create(req.body);
+            console.log(createdUser, "<--- Created User");
+    
+            req.session.userId = createdUser._id;
+            req.session.username = createdUser.username;
+            req.session.logged = true;
+            res.redirect("/");
+         } catch (err) {
+             res.send(err);
+         }
+    }
 
-    req.body.password = hashedPassword;
 
-    try {
-        const createdUser = await User.create(req.body);
-        console.log(createdUser, "<--- Created User");
-
-        req.session.userId = createdUser._id;
-        req.session.username = createdUser.username;
-        req.session.logged = true;
-        res.redirect("/");
-     } catch (err) {
-         res.send(err);
-     }
 });
 
 router.get("/:id/edit", async (req, res) => {
