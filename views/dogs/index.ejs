@@ -25,10 +25,12 @@
         <div class="carousel-inner inner">
         <% for(let i = 0; i < dog.length; i++){ %>
             <div class="<%= (i === 0) ? 'slide carousel-item active' : 'slide carousel-item' %>">
+                <a href="/dogs/<%=dog[i]._id%>">
                 <img class="carousel-image" src="<%=dog[i].img%>" alt="Current Slide">
                 <div class="carousel-caption" w>
                     <h4><a href="/dogs/<%=dog[i]._id%>"> <%=dog[i].name%></a></h4>
                     <h5><%=dog[i].description%></h5>
+                </a>
                 </div>
             </div>
         <% } %>
