@@ -19,6 +19,11 @@ nav a {
     letter-spacing: 1px;
 }
 
+nav button {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 .carousel-caption {
     background:rgba(255,255,255,0.5);
     color: black;
@@ -61,7 +66,9 @@ img.show {
     display: none;
 }
 
-.logo{
+.logo, a.logo{
     font-family: 'Baloo Da', cursive;
     color: black;
+    text-decoration: none;
+    text-transform: uppercase;
 }
