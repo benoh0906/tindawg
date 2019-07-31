@@ -7,7 +7,8 @@ const requestSchema = new mongoose.Schema({
     requestorEmail: String,
     requestorPhone: String,
     requestorLocation: String,
-    requestorUsername: String
+    requestorUsername: String,
+    requestorMessage:String
 });
 
 const Request = mongoose.model("Request", requestSchema);

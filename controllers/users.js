@@ -41,7 +41,7 @@ router.post("/login", async (req, res) => {
             req.session.password=foundUser.password;
             req.session.logged = true;
             res.redirect(`/users/${req.session.userId}`);
-        
+            req.session.message = ""
         } else {
             req.session.message = "Username or password incorrect";
             res.redirect("/");
@@ -81,6 +81,7 @@ async (req, res) => {
             req.session.userId = createdUser._id;
             req.session.username = createdUser.username;
             req.session.logged = true;
+            req.session.message = "Account Created"
             res.redirect("/");
          } catch (err) {
              res.send(err);
@@ -124,6 +125,24 @@ router.get("/logout", async (req, res) => {
 });
 
 
+//delete Request
+
+router.delete('/requests/:id', async (req, res) => {
+    try {
+      const findRemoveReq = await Request.findOneAndDelete({_id: req.params.id});
+      const findUserWithReq = await User.findOne({'requests':req.params.id})
+
+      findUserWithReq.requests.remove(req.params.id)
+      findRemoveReq.save()
+        res.redirect(`/users/${req.session.userId}`);
+    } catch(err){
+        console.log(err)
+      res.send(err)
+    }
+});
+
+
+
 //delete route
 
 router.delete('/:id', async (req, res) => {
@@ -139,6 +158,9 @@ router.delete('/:id', async (req, res) => {
       res.send(err)
     }
 });
+
+
+
 
 // Edit Page
 
@@ -159,6 +181,7 @@ router.get('/:id', async (req, res) => {
         const findUser = await User.findById(req.params.id).populate('dogs').exec();
         const findReq = await User.findById(req.params.id).populate('requests').exec();
         console.log(findReq,'<---FINDREQ HERE')
+        
         res.render("users/show.ejs",{
             user: findUser,
             request:findReq,
