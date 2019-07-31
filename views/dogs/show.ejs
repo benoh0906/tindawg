@@ -23,12 +23,12 @@
       <section>
         <img class="show" src="<%=dog.img%>"/><br/>
         <div class="flex-container">
-        <li class="flexbox"><u>Name</u>: <b><%=dog.name%></b></li>
-        <li class="flexbox"><u>Owner</u>: <b><%=user.name%></b></li>
-        <li class="flexbox"><u>Gender</u>: <b><%=dog.gender%></b></li>
-        <li class="flexbox"><u>Breed</u>: <b><%=dog.breed%></b></li>
-        <li class="flexbox"><u>Age</u>: <b><%=dog.age%></b></li>
-        <li class="flexbox"><u>Description</u>: <b><%=dog.description%></b></li>
+        <li class="flex-box"><u>Name</u>: <b><%=dog.name%></b></li>
+        <li class="flex-box"><u>Owner</u>: <b><%=user.name%></b></li>
+        <li class="flex-box"><u>Gender</u>: <b><%=dog.gender%></b></li>
+        <li class="flex-box"><u>Breed</u>: <b><%=dog.breed%></b></li>
+        <li class="flex-box"><u>Age</u>: <b><%=dog.age%></b></li>
+        <li class="flex-box"><u>Description</u>: <b><%=dog.description%></b></li>
         </div>
       </section>
         <form id="requestingBox" action="/users/<%=user._id%>/request" method="POST">
@@ -40,7 +40,7 @@
             <input class="hideVal" type="text" name="requestorLocation" value=<%=location%>>
             <input class="hideVal" type="text" name="requestorUsername" value=<%=username%>>
 
-            <button type="submit">Request</button>
+            <button type="submit">Request</button><br/><br/>
         </form>
     </main>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

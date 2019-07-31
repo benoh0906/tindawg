@@ -20,8 +20,9 @@
 
       <h2>My Page</h2>
     <main>
-      <section>
-        <h3>My Info</h3>
+    <div class="flex-container">
+      <div class="flex-box-user">
+        <h4>My Info</h4>
         <ul>
           <li>Name: <%=user.name%></li>
           <li>Username: <%=user.username%></li>
@@ -29,56 +30,42 @@
           <li>Phone Number: <%=user.phone%></li>
           <li>Address: <%=user.location%></li>
         </ul>
+        <a href="/users/<%=user._id%>/edit" class="btn btn-secondary">Edit</a>
+      </div>
 
-        <a href="/users/<%=user._id%>/edit">Edit</a>
+      <div class="flex-box-user">
+          <h4>My Dogs</h4>
+          <ul>
+            <% for (let i = 0; i < user.dogs.length; i++) {%>
+              <li><a href="/dogs/<%=user.dogs[i]._id%>"><%=user.dogs[i].name%></a><br/>
+                  <a href="/dogs/<%=user.dogs[i]._id%>/edit" class="btn btn-secondary">Edit</a>
+                  <form action="/dogs/<%=user.dogs[i]._id%>?_method=DELETE" method="POST">
+                      <button type="submit" class="btn btn-dark">Delete</button>
+                  </form>
+              </li>
+            <%}%>
+          </ul>
+          <a href="/dogs/new"> Add a dog </a>
+      </div>
 
-      </section>
-      <section>
-        <h3>Dogs owned by this user:</h3>
-        <ul>
-          <% for (let i = 0; i < user.dogs.length; i++) {%>
-            <li><a href="/dogs/<%=user.dogs[i]._id%>"><%=user.dogs[i].name%></a><br/>
-                <a href="/dogs/<%=user.dogs[i]._id%>/edit">Edit</a>
-                <form action="/dogs/<%=user.dogs[i]._id%>?_method=DELETE" method="POST">
-                    <button type="submit">Delete</button>
-                </form>
-
-
-            </li>
-
-          <%}%>
-        </ul>
-        <a href="/dogs/new"> Add a dog </a>
-
-      </section>
-      <section>
-        <h3>Requests</h3>
-        <ul>
-            <% for (let i = 0; i < request.requests.length; i++) {%>
-            <li>
-                Sent To:<br/> <%=request.requests[i].name%>  <br/>
-                <br/>
-                From: <br/>
-                Owner - <%=request.requests[i].requestorName%><br/>
-                Username - <%=request.requests[i].requestorUsername%><br/>
-                Email - <%=request.requests[i].requestorEmail%><br/>
-                Phone - <%=request.requests[i].requestorPhone%><br/>
-                Location - <%=request.requests[i].requestorLocation%>
-
-            </li>
-
-          <%}%>
-        </ul>
-      </section>
-
-        
-
-
-      <section>
-          <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
-              <input type="submit" value="Delete User"/>
-          </form>
-      </section>
+      <div class="flex-box-user">
+          <h4>Requests</h4>
+          <ul>
+              <% for (let i = 0; i < request.requests.length; i++) {%>
+              <li>
+                  Sent To:<br/> <%=request.requests[i].name%>  <br/>
+                  <br/>
+                  From: <br/>
+                  Owner - <%=request.requests[i].requestorName%><br/>
+                  Username - <%=request.requests[i].requestorUsername%><br/>
+                  Email - <%=request.requests[i].requestorEmail%><br/>
+                  Phone - <%=request.requests[i].requestorPhone%><br/>
+                  Location - <%=request.requests[i].requestorLocation%>
+              </li>
+            <%}%>
+          </ul>
+      </div>
+    </div>
 
     </main>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

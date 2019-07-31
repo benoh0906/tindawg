@@ -1,6 +1,5 @@
-body, body a {
-   background-color: #4f79ff;
-   color: white;
+h2, h3, h4 {
+    text-align: center;
 }
 
 main {
@@ -14,6 +13,7 @@ main {
 nav {
     font-size: 25px;
     width: 100%;
+    background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(127,156,249,1) 0%, rgba(255,79,121,1) 100%);
 }
 
 nav a {
@@ -25,6 +25,8 @@ nav a {
 .carousel-caption {
     background:rgba(255,255,255,0.5);
     color: black;
+    width: 100%;
+    left: 0;
 }
 
 #dogsCarousel {
@@ -48,16 +50,26 @@ img.show {
     padding: 20px;
 }
 
-.flex-container {
+.flex-container, ul {
     justify-content: center;
     max-width: 500px;
-    list-style: none;
     display: flex;
     flex-wrap: wrap;
+    list-style: none;
 }
 
-.flexbox {
+.flex-box {
     padding: 15px;
+}
+
+.flex-box-user, ul {
+    padding: 15px;
+    max-width: 400px;
+    max-height: 300px;
+    margin: 0 20px;
+    list-style: none;
+    display:block;
+}
 
 .hideVal {
     display: none;

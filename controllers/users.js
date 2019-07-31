@@ -121,25 +121,17 @@ router.get("/logout", async (req, res) => {
 //delete route
 
 router.delete('/:id', async (req, res) => {
-
     try {
-  
       const deletedUser = await User.findOneAndDelete({_id: req.params.id});
-  
-  
       const deletedDogs = await Dog.remove({
           _id: {
             $in: deletedUser.dogs
           }
         });
-  
         res.redirect('/');
-
     } catch(err){
       res.send(err)
     }
-  
-  
 });
 
 // Edit Page
