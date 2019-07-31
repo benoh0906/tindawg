@@ -1,9 +1,8 @@
 <nav class="navbar navbar-dark" bg-light style="background-color: #FF4F79;">
-    <a href="/dogs" class="badge badge-dark">Home</a>
-    <a href="/users/<%=userId%>" class="badge badge-dark"><%=username%></a>
+    <a class="nav-link" href="/dogs">Home</a>
+    <a class="nav-link" href="/users/<%=userId%>">Account  </a>
     
-
     <form action="/users/logout" method="GET">
-      <a href="/users/logout" class="badge badge-light">Logout</a>
+      <a class="nav-link" href="/users/logout" >Logout</a>
     </form>
 </nav>
