@@ -1,3 +1,8 @@
+body, body a {
+   background-color: #4f79ff;
+   color: white;
+}
+
 main {
     display: flex;
     align-items: center;
@@ -8,6 +13,7 @@ main {
 
 nav {
     font-size: 25px;
+    width: 100%;
 }
 
 nav a {
@@ -28,16 +34,31 @@ nav a {
 }
 
 .inner, .slide {
-    height:100%;
+    height: 100%;
 }
 
 .carousel-image {
     width: 100%;
-    height:100%;
+    height: 100%;
     object-fit: cover;
 }
 
+img.show {
+    max-width: 500px;
+    padding: 20px;
+}
 
-.hideVal{
+.flex-container {
+    justify-content: center;
+    max-width: 500px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flexbox {
+    padding: 15px;
+
+.hideVal {
     display: none;
 }
