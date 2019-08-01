@@ -1,5 +1,8 @@
 body {
     background: linear-gradient(90deg, rgba(238,174,202,0.7) 0%, rgba(148,187,233,0.7) 100%);
+    font-family: 'Blinker', sans-serif;
+    min-height: 100vh;
+    position: relative;
 }
 
 h2, h3, h4 {
@@ -28,18 +31,32 @@ nav {
     justify-content: center;
 }
 
-nav a {
-    padding: 0 10px;
+nav a, footer a {
     color: white;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-nav a:hover {
+nav a:hover, footer a:hover {
     text-decoration: none;
     color: black;
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-bar {
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    bottom: 0;
+    padding: 1rem;
+    text-align: center;
+    background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(127,156,249,1) 0%, rgba(255,79,121,1) 100%);
+}
+
+footer {
+    font-family: 'Blinker', sans-serif;
+    font-size: 15px;
 }
 
 .carousel-caption {
@@ -49,10 +66,10 @@ nav a:hover {
     left: 0;
 }
 
-#dogsCarousel{
+#dogsCarousel {
     max-height: 500px;
     height: 500px;
-    width: 50%;
+    width: 60%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -68,7 +85,7 @@ nav a:hover {
 
 img.show {
     max-width: 500px;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 button {
@@ -81,6 +98,9 @@ button {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
+    border: 1px solid black;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.4), 0 6px 10px 0 rgba(0, 0, 0, 0.4);
+    background-color: rgba(241, 241, 241);
 }
 
 .card-body {
@@ -107,15 +127,10 @@ button {
     background-color: rgba(241, 241, 241);
 }
 
-#requestDisplay {
-    /* background-color: rgba(241, 241, 241);
-    padding: 0;
-    width: 0;
-    margin: 0 auto; */
-}
-
 .request-card {
-    background-color: rgba(241, 241, 241)
+    background-color: rgba(241, 241, 241);
+    text-align: center;
+    width: 83%;
 }
 
 .hideVal {
@@ -128,7 +143,7 @@ button {
     font-family: 'Pacifico', cursive;
     color: black;
     text-decoration: none;
-    margin: 20px 20px;
+    margin: 0 20px 20px 20px;
     font-size: 1.3em;
     text-shadow: 2px 2px grey;
     letter-spacing: 2.5px;
@@ -160,6 +175,77 @@ button {
     margin: 0;
 }
 
-#delete-button {
+#delete-button, #edit-button, #add-button, #add-button:hover {
+    font-size: 18px;
+    letter-spacing: 2px;
     margin: 5px 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(127,156,249,1) 0%, rgba(255,79,121,1) 100%);
+}
+
+#delete-button:hover, #edit-button:hover, #add-button:hover {
+    color: black;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(127,156,249,1) 0%, rgba(255,79,121,1) 100%);
+}
+
+
+/* Screen optimization */
+
+
+/* iPhone 6/7/8 Plus & X */
+@media screen and (max-width: 414px) {
+    body {
+        font-size: 20px;
+    }
+    nav {
+        font-size: 1rem;
+    }
+    #dogsCarousel {
+        height: 300px;
+        width: 92%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+    }
+    .carousel-caption {
+    padding: 0;
+    }
+    .dog-flex-container {
+        width: 92%;
+    }
+    img.show {
+        width: 100%;
+    }
+    .card-body, .dog-flex-box, .btn {
+     margin: 5px 10px;
+     padding: 0;
+    }
+}
+
+/* Regular sized iPhones */
+@media screen and (max-width: 320px) {
+    body {
+        font-size: 14px;
+    }
+    nav {
+        font-size: 1rem;
+    }
+    #dogsCarousel {
+        height: 300px;
+        width: 92%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
+    }
+    .carousel-caption {
+    padding: 0;
+    }
+    .dog-flex-container {
+        width: 92%;
+    }
+    img.show {
+        width: 100%;
+    }
+    .card-body, .dog-flex-box, .btn {
+        margin: 0;
+        padding: 0;
+    }
 }

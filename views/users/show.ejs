@@ -32,7 +32,7 @@
           <li>Phone Number: <%=user.phone%></li>
           <li>Address: <%=user.location%></li>
         </ul>
-        <a id="userShowInfoEdit" href="/users/<%=user._id%>/edit" class="btn btn-secondary">Edit</a>
+        <a id="userShowInfoEdit" href="/users/<%=user._id%>/edit" class="btn btn-lg btn-secondary">Edit</a>
       </div>
     </div><br/>
 
@@ -76,7 +76,7 @@
       </div>
 
 
-          <h4>My Dogs</h4><button class="btn btn-white"> <a href="/dogs/new"> Add A Dog </a></button>
+          <h4>My Dogs</h4><a href="/dogs/new" class="btn-lg" id="add-button"> Add A Dog</a> 
 
           <div class="dogContainer">
             <% for (let i = 0; i < user.dogs.length; i++) {%>
@@ -86,7 +86,7 @@
                   <div class="card-body">
                     <h5 class="card-title"><%=user.dogs[i].name%></a></h5>
                     <form action="/dogs/<%=user.dogs[i]._id%>?_method=DELETE" method="POST">
-                      <a href="/dogs/<%=user.dogs[i]._id%>/edit" class="btn btn-secondary btn-block">Edit</a>
+                      <a href="/dogs/<%=user.dogs[i]._id%>/edit" class="btn btn-secondary btn-block" id="edit-button">Edit</a>
                       <button type="submit" class="btn btn-dark btn-block" id="delete-button">Delete</button>
                     </form>
                   </div>
@@ -95,13 +95,10 @@
             <%}%>
           </div>
     </div>
+  </main><br/><br/><br/>
 
+  <%- include ../partials/footer.ejs%>
 
-
-  
-    
-
-    </main>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
