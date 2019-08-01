@@ -127,7 +127,7 @@ img.show {
     letter-spacing: 2.5px;
 }
 
-#errorMessage{
+.errorMessage{
     color: red;
     font-weight: bold;
 }

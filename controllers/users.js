@@ -84,7 +84,8 @@ async (req, res) => {
             req.session.message = "Account Created"
             res.redirect("/");
          } catch (err) {
-             res.send(err);
+            req.session.message = "Wrong Input"
+            res.redirect("/");
          }
     }
 
