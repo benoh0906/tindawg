@@ -135,7 +135,7 @@ button {
 }
 
 #errorMessage {
-    color: red;
+    color: black;
     font-weight: bold;
 }
 
@@ -272,4 +272,12 @@ button {
 
 #delete-button {
     margin: 5px 0;
+}
+
+.show{
+    visibility:visible;
+
+}
+.hidden{
+    visibility:hidden;
 }

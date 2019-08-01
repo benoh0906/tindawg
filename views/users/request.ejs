@@ -12,31 +12,57 @@
   <body>
     <header>
         <h1><a class="logo" href="/dogs">Tindawg</a></h1>
-    <%- include ../partials/loggedInNav.ejs%> 
-      
     </header>
-      <h1>Edit <%=dog.name%>'s Info</h1>
+
+<%  if(isLogged===false){%>
+    <%- include ../partials/loggedOutNav.ejs%>
+    <%}else{%>
+    <%- include ../partials/loggedInNav.ejs%>
+    <%}%>
+
+      <h2>Requests</h2>
     <main>
-      <h2>Dog's Attributes:</h2>
-      <form action="/dogs/<%=dog._id%>?_method=PUT" method="post">
 
 
-        <label>Name: </label><input type="text" value="<%=dog.name%>" name="name"/>
-        <label>Gender: </label><select name="gender" value="<%=dog.gender%>">
-                                 <option value="male">Male</option>
-                                 <option value="female">Female</option>
-                                </select><br/>
-        <label>Breed: </label><input type="text" value="<%=dog.breed%>" name="breed"/>
-        <label>Age: </label><input type="number" value="<%=dog.age%>" min="0" name="age"/><br/>
-        <label>Image URL: </label><input type="text" value="<%=dog.img%>" name="img"/><br/>
-        <label>Description: </label><textarea type="text" name="description"><%=dog.description%></textarea><br/>
-        <input type="submit" value="Update Dog"/>
-      </form>
+
+
+
+<div class="accordion" id="accordionExample">
+<% for (let i = 0; i < request.requests.length; i++) {%>
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%=i%>" aria-expanded="true" aria-controls="collapseOne">
+          <%=request.requests[i].name%>
+        </button>
+      </h2>
+    </div>
+    <div id="collapse<%=i%>" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        Requestor: <%=request.requests[i].requestorName%><br/>
+        Email: <%=request.requests[i].requestorEmail%><br/>
+        Phone: <%=request.requests[i].requestorPhone%><br/>
+        Message: <%=request.requests[i].requestorMessage%><br/>      
+    </div>
+    <div class="card-footer">
+        <form action="/users/requests/<%=request.requests[i]._id%>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-dark">Delete</button>
+        </form>
+    </div>
+  </div>
+  <%}%>
+</div>
+
+
+
+
+
+  
+    
+
     </main>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
