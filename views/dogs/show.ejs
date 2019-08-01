@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="/css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Blinker:600|Baloo+Da|Pacifico|Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Blinker:600|Baloo+Da|Pacifico|Rubik&display=swap" rel="stylesheet">
     <script defer src="/js/app.js"></script>
   </head>
   <body>
@@ -14,29 +14,28 @@
         <h1><a class="logo" href="/dogs">Tindawg</a></h1>
     </header>
 
-<%  if(isLogged===true){%>
+<% if(isLogged===true){%>
     <%- include ../partials/loggedInNav.ejs%>
     <%}else{%>
     <%- include ../partials/loggedOutNav.ejs%>
     <%}%>
 
-      <h2><%=dog.name%> of <%=user.name%></h2>
     <main>
-      <section>
+      <h2><%=dog.name%> of <%=user.name%></h2>
+    <div class="dog-flex-container">
         <img class="show" src="<%=dog.img%>"/><br/>
-        <div class="flex-container">
-        <li class="flex-box"><u>Name</u>: <b><%=dog.name%></b></li>
-        <li class="flex-box"><u>Owner</u>: <b><%=user.name%></b></li>
-        <li class="flex-box"><u>Gender</u>: <b><%=dog.gender%></b></li>
-        <li class="flex-box"><u>Breed</u>: <b><%=dog.breed%></b></li>
-        <li class="flex-box"><u>Age</u>: <b><%=dog.age%></b></li>
-        <li class="flex-box"><u>Description</u>: <b><%=dog.description%></b></li>
-        </div>
-      </section>
 
+      <div class="card-body text-center border-dark mb-3">
+        <li class="dog-flex-box"><u>Name</u> <b><%=dog.name%></b></li>
+        <li class="dog-flex-box"><u>Owner</u> <b><%=user.name%></b></li>
+        <li class="dog-flex-box"><u>Gender</u> <b><%=dog.gender%></b></li>
+        <li class="dog-flex-box"><u>Breed</u> <b><%=dog.breed%></b></li>
+        <li class="dog-flex-box"><u>Age</u> <b><%=dog.age%></b></li>
+        <li class="dog-flex-box"><u>Description</u> <b><%=dog.description%></b></li>
+      </div>
+    </div><br/>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Send Request</button>
-
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Send Request</button><br/>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -73,7 +72,7 @@
     </div>
   </div>
 
-    </main>
+  </main>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
