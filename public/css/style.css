@@ -71,17 +71,19 @@ img.show {
     border: 1px solid black;
 }
 
+button {
+    margin: 5px;
+}
+
 .dog-flex-container {
     justify-content: center;
     max-width: 500px;
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    
 }
 
 .card-body {
-    border: 1px solid black;
     border-top: none;
 }
 
@@ -101,21 +103,26 @@ img.show {
     position: relative;
 }
 
-#personalInfo{
-    background-color: rgba(241, 241, 241);
-
-}
-
-#requestDisplay{
+#personalInfo {
     background-color: rgba(241, 241, 241);
 }
 
+#requestDisplay {
+    /* background-color: rgba(241, 241, 241);
+    padding: 0;
+    width: 0;
+    margin: 0 auto; */
+}
+
+.request-card {
+    background-color: rgba(241, 241, 241)
+}
 
 .hideVal {
     display: none;
 }
 
-.logo, a.logo{
+.logo, a.logo {
     display: flex   ;
     justify-content: center;
     font-family: 'Pacifico', cursive;
@@ -127,17 +134,18 @@ img.show {
     letter-spacing: 2.5px;
 }
 
-.errorMessage{
+#errorMessage {
     color: red;
     font-weight: bold;
 }
 
-.dogContainer{
-    display: inline;
+.dogContainer {
+    text-align: center;
 }
 
-.dogCard{
+.dogCard {
     display: inline-block;
+    margin: 5px 5px;
 }
 
 #logInDiv{
@@ -250,3 +258,18 @@ img.show {
     color: #777;
   }
   
+.card {
+    border: 1px solid black;
+}
+
+.card-img-top {
+    object-fit: cover;
+}
+
+.delete-button {
+    margin: 0;
+}
+
+#delete-button {
+    margin: 5px 0;
+}
