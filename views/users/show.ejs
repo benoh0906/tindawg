@@ -23,7 +23,7 @@
       <h2>My Page</h2>
     <main>
     <div class="flex-container">
-      <div class="flex-box-user">
+      <div class="flex-box-user" id="personalInfo">
         <h4>Info</h4>
         <ul>
           <li>Name: <%=user.name%></li>
@@ -34,62 +34,68 @@
         </ul>
         <a id="userShowInfoEdit" href="/users/<%=user._id%>/edit" class="btn btn-secondary">Edit</a>
       </div>
-
-      <div class="flex-box-user">
+    </div>
+      <div>
           <h4>My Dogs</h4>
-          <ul>
+          <ul class="dogContainer">
             <% for (let i = 0; i < user.dogs.length; i++) {%>
-              <li><a href="/dogs/<%=user.dogs[i]._id%>"><%=user.dogs[i].name%></a><br/>
-                  <form action="/dogs/<%=user.dogs[i]._id%>?_method=DELETE" method="POST">
-                  <a href="/dogs/<%=user.dogs[i]._id%>/edit" class="btn btn-secondary">Edit</a>
+              <li class="dogCard">
+                <div class="card" style="width: 18rem;">
+                  <img height=200px src=<%=user.dogs[i].img%> class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="/dogs/<%=user.dogs[i]._id%>"><%=user.dogs[i].name%></a></h5>
+                    <form action="/dogs/<%=user.dogs[i]._id%>?_method=DELETE" method="POST">
+                      <a href="/dogs/<%=user.dogs[i]._id%>/edit" class="btn btn-secondary">Edit</a>
                       <button type="submit" class="btn btn-dark">Delete</button>
-                  </form>
+                    </form>
+                  </div>
+                </div>
               </li>
             <%}%>
           </ul>
-          <a href="/dogs/new"> Add a dog </a>
-      </div>
+    </div>
+
+          <button class="btn btn-white"> <a href="/dogs/new"> Add a dog </a></button>
 
 
-
-      <div class="flex-box-user">
+      <div id="request">
           <h4>Requests</h4>
-          <ul>
+          <ul id="requestDisplay">
               <% for (let i = 0; i < request.requests.length; i++) {%>
               
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter<%=i%>">
-  <%=request.requests[i].name%>
-</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter<%=i%>">
+                  <%=request.requests[i].name%>
+                </button>
 
-<div class="modal fade" id="exampleModalCenter<%=i%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Request to <%=request.requests[i].name%></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Requestor: <%=request.requests[i].requestorName%><br/>
-        Email: <%=request.requests[i].requestorEmail%><br/>
-        Phone: <%=request.requests[i].requestorPhone%><br/>
-        Message: <%=request.requests[i].requestorMessage%><br/>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <form action="/users/requests/<%=request.requests[i]._id%>?_method=DELETE" method="POST">
-          <button type="submit" class="btn btn-dark">Delete</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+                <div class="modal fade" id="exampleModalCenter<%=i%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Request to <%=request.requests[i].name%></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Requestor: <%=request.requests[i].requestorName%><br/>
+                        Email: <%=request.requests[i].requestorEmail%><br/>
+                        Phone: <%=request.requests[i].requestorPhone%><br/>
+                        Message: <%=request.requests[i].requestorMessage%><br/>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <form action="/users/requests/<%=request.requests[i]._id%>?_method=DELETE" method="POST">
+                          <button type="submit" class="btn btn-dark">Delete</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             <%}%>
           </ul>
       </div>
-    </div>
+    
 
     </main>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
