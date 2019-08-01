@@ -161,13 +161,18 @@ router.delete('/:id', async (req, res) => {
 
 
 
-// Edit Page
+// Edit User
 
 
 router.put("/:id", async (req, res) => {
     try {
         const editUser = await User.findByIdAndUpdate(req.params.id, req.body);
         req.session.username=req.body.username
+        req.session.name=req.body.name;
+        req.session.email=req.body.email;
+        req.session.phone=req.body.phone;
+        req.session.location=req.body.location;
+        req.session.password=req.body.password;
         res.redirect("/users/" + req.params.id);
     } catch(err){
         send(err);
