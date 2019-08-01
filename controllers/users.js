@@ -5,7 +5,6 @@ const User    = require("../models/users");
 const Dog     = require("../models/dogs");
 const Request   = require("../models/requests");
 
-
 router.get('/',(req,res)=>{
     if(req.session.logged === true){
         req.session.authorIndexView+=1;
@@ -23,6 +22,14 @@ router.get('/',(req,res)=>{
         }
     })
 })
+
+router.get("/register",(req,res)=>{
+    res.render("users/register.ejs", {
+        message : req.session.message,
+        isLogged: req.session.isLogged
+    })
+});
+
 
 router.post("/login", async (req, res) => {
     try {
@@ -43,6 +50,7 @@ router.post("/login", async (req, res) => {
             res.redirect(`/users/${req.session.userId}`);
             req.session.message = ""
         } else {
+            
             req.session.message = "Username or password incorrect";
             res.redirect("/");
         } 
@@ -59,14 +67,13 @@ router.post("/login", async (req, res) => {
 
 
 router.post("/register", 
-// [ check('confirmPassword', 'Passwords do not match').custom((value, {req}) => (value === req.body.password)),
-// ],
+
 async (req, res) => {
     const password = req.body.password;
     const passConfirm = req.body.confirmPassword;
     if (password !== passConfirm){
         req.session.message = "Passwords don't match"
-        res.redirect("/")
+        res.redirect("/users/register")
     } else {
         const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
         
@@ -82,10 +89,10 @@ async (req, res) => {
             req.session.username = createdUser.username;
             req.session.logged = true;
             req.session.message = "Account Created"
-            res.redirect("/");
+            res.redirect("/dogs");
          } catch (err) {
             req.session.message = "Wrong Input"
-            res.redirect("/");
+            res.redirect("/users/register");
          }
     }
 
@@ -114,15 +121,6 @@ router.get("/logout", async (req, res) => {
     } catch(err){
         res.send(err);
     }
-
-
-    // req.session.destroy((err) => {
-    //     if (err) {
-    //         res.send(err);
-    //     } else {
-    //         res.redirect("/");
-    //     }
-    // })
 });
 
 
@@ -214,18 +212,6 @@ router.post("/:id/request", async (req, res) => {
     } 
   });
 
-
-
-
-    // User.findById(req.params.id)
-    // .populate('dogs')
-    // .exec((err, foundUser) => {
-    //   console.log(foundUser, ' foundUser in users show page')
-  
-    //   res.render('users/show.ejs', {
-    //     user: foundUser
-    //   })
-    // })
 
 
 module.exports = router;

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="js/app.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Blinker:600|Baloo+Da|Pacifico|Rubik&display=swap" rel="stylesheet">
+
+    <title>Index Page</title>
+  </head>
+  <body>
+        <header>
+            <h1><a class="logo" href="/dogs">Tindawg</a></h1>
+        </header>
+        <main>
+
+            <%  if(isLogged===false){%>
+            <%- include ../partials/loggedOutNav.ejs%>
+            <%}else{%>
+            <%- include ../partials/loggedInNav.ejs%>
+            <%}%>
+        
+<span id="errorMessage"><%= message %></span>
+
+<div class="container">
+<div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">Register</div>
+                            <div id="registerCardBody" class="card-body">
+
+                                <form action="/users/register" method="POST" class="form-horizontal">
+
+                                    <div class="form-group">
+                                        <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username" class="cols-sm-2 control-label">Username</label>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="cols-sm-2 control-label">Password</label>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                                                <input type="password" class="form-control" name="confirmPassword" id="confirm" placeholder="Confirm your Password" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+</div>
+
+
+
+        </main>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>
