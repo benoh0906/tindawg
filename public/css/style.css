@@ -76,6 +76,7 @@ img.show {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
+    
 }
 
 .flex-box {
@@ -91,6 +92,16 @@ img.show {
     display:block;
     position: relative;
 }
+
+#personalInfo{
+    background-color: rgba(241, 241, 241);
+
+}
+
+#requestDisplay{
+    background-color: rgba(241, 241, 241);
+}
+
 
 .hideVal {
     display: none;
@@ -111,4 +122,12 @@ img.show {
 #errorMessage{
     color: red;
     font-weight: bold;
+}
+
+.dogContainer{
+    display: inline;
+}
+
+.dogCard{
+    display: inline-block;
 }

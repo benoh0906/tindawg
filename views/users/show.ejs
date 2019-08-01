@@ -23,7 +23,7 @@
       <h2>My Page</h2>
     <main>
     <div class="flex-container">
-      <div class="flex-box-user">
+      <div class="flex-box-user" id="personalInfo">
         <h4>Info</h4>
         <ul>
           <li>Name: <%=user.name%></li>
@@ -34,14 +34,14 @@
         </ul>
         <a id="userShowInfoEdit" href="/users/<%=user._id%>/edit" class="btn btn-secondary">Edit</a>
       </div>
-
-      <div class="flex-box-user">
+    </div>
+      <div>
           <h4>My Dogs</h4>
-          <ul>
+          <ul class="dogContainer">
             <% for (let i = 0; i < user.dogs.length; i++) {%>
-              <li>
+              <li class="dogCard">
                 <div class="card" style="width: 18rem;">
-                  <img src=<%=user.dogs[i].img%> class="card-img-top" alt="">
+                  <img height=200px src=<%=user.dogs[i].img%> class="card-img-top" alt="">
                   <div class="card-body">
                     <h5 class="card-title"><a href="/dogs/<%=user.dogs[i]._id%>"><%=user.dogs[i].name%></a></h5>
                     <form action="/dogs/<%=user.dogs[i]._id%>?_method=DELETE" method="POST">
@@ -53,14 +53,14 @@
               </li>
             <%}%>
           </ul>
-          <a href="/dogs/new"> Add a dog </a>
     </div>
 
+          <button class="btn btn-white"> <a href="/dogs/new"> Add a dog </a></button>
 
 
-      <div class="flex-box-user">
+      <div id="request">
           <h4>Requests</h4>
-          <ul>
+          <ul id="requestDisplay">
               <% for (let i = 0; i < request.requests.length; i++) {%>
               
 
@@ -95,7 +95,7 @@
             <%}%>
           </ul>
       </div>
-    </div>
+    
 
     </main>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
