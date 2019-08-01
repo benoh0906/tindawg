@@ -5,6 +5,9 @@ const {check, validationResult} = require('express-validator/check')
 const session        = require("express-session");
 const app            = express()
 
+require('dotenv').config()
+const PORT = process.env.PORT
+
 require("./db/db.js")
 
 
@@ -42,7 +45,9 @@ app.get("/",(req,res)=>{
     })
 });
 
-app.listen(3000, ()=>{
+
+
+app.listen(PORT, ()=>{
     console.log("Listening on port 3000");
 })
 
