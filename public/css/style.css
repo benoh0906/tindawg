@@ -71,13 +71,16 @@ img.show {
     border: 1px solid black;
 }
 
+button {
+    margin: 5px;
+}
+
 .dog-flex-container {
     justify-content: center;
     max-width: 500px;
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    
 }
 
 .card-body {
@@ -109,6 +112,10 @@ img.show {
     padding: 0;
     width: 0;
     margin: 0 auto; */
+}
+
+.request-card {
+    background-color: rgba(241, 241, 241)
 }
 
 .hideVal {
@@ -147,4 +154,12 @@ img.show {
 
 .card-img-top {
     object-fit: cover;
+}
+
+.delete-button {
+    margin: 0;
+}
+
+#delete-button {
+    margin: 5px 0;
 }

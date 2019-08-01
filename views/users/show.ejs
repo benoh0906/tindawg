@@ -34,34 +34,12 @@
         </ul>
         <a id="userShowInfoEdit" href="/users/<%=user._id%>/edit" class="btn btn-secondary">Edit</a>
       </div>
-    </div>
-
-          <h4>My Dogs</h4>
-
-          <div class="dogContainer">
-            <% for (let i = 0; i < user.dogs.length; i++) {%>
-              <li class="dogCard">
-                <div class="card" style="width: 18rem;">
-                  <a href="/dogs/<%=user.dogs[i]._id%>"><img height=200px src=<%=user.dogs[i].img%> class="card-img-top" alt="">
-                  <div class="card-body">
-                    <h5 class="card-title"><%=user.dogs[i].name%></a></h5>
-                    <form action="/dogs/<%=user.dogs[i]._id%>?_method=DELETE" method="POST">
-                      <a href="/dogs/<%=user.dogs[i]._id%>/edit" class="btn btn-secondary">Edit</a>
-                      <button type="submit" class="btn btn-dark">Delete</button>
-                    </form>
-                  </div>
-                </div>
-              </li>
-            <%}%>
-          </div>
-    </div>
-
-          <button class="btn btn-white"> <a href="/dogs/new"> Add a dog </a></button>
+    </div><br/>
 
 
-      <div id="request">
-          <h4>Requests</h4>
-          <ul id="requestDisplay">
+<div class="request-card border-dark mb-3">
+          <div class="card-header"><h4>Requests</h4></div>
+          <div id="requestDisplay">
               <% for (let i = 0; i < request.requests.length; i++) {%>
               
 
@@ -94,8 +72,33 @@
                   </div>
                 </div>
             <%}%>
-          </ul>
+          </div>
       </div>
+
+
+          <h4>My Dogs</h4><button class="btn btn-white"> <a href="/dogs/new"> Add A Dog </a></button>
+
+          <div class="dogContainer">
+            <% for (let i = 0; i < user.dogs.length; i++) {%>
+              <li class="dogCard">
+                <div class="card" style="width: 18rem;">
+                  <a href="/dogs/<%=user.dogs[i]._id%>"><img height=200px src=<%=user.dogs[i].img%> class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title"><%=user.dogs[i].name%></a></h5>
+                    <form action="/dogs/<%=user.dogs[i]._id%>?_method=DELETE" method="POST">
+                      <a href="/dogs/<%=user.dogs[i]._id%>/edit" class="btn btn-secondary btn-block">Edit</a>
+                      <button type="submit" class="btn btn-dark btn-block" id="delete-button">Delete</button>
+                    </form>
+                  </div>
+                </div>
+              </li>
+            <%}%>
+          </div>
+    </div>
+
+
+
+  
     
 
     </main>
