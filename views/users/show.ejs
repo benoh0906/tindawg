@@ -31,13 +31,13 @@
           <li>Email : <b><i><%=user.email%></i></b></li>
           <li>Phone Number : <b><i><%=user.phone%></i></b></li>
           <li>Address : <b><i><%=user.location%></i></b></li>
-        <a href="/users/<%=user._id%>/edit" class="btn btn-lg btn-secondary" id="edit-user">Edit</a>
+        <a href="/users/<%=user._id%>/edit" class="btn btn-lg btn btn-outline-dark" id="edit-user">Edit</a>
         </ul>
       </div>
     </div><br/>
 
 
-          <h4>My Dogs</h4><a href="/dogs/new" class="btn-lg" id="add-button"> Add A Dog</a> 
+          <h4>My Dogs</h4><a href="/dogs/new" class="btn-lg btn btn-dark id="add-button"> Add A Dog</a> 
 
           <div class="dogContainer">
             <% for (let i = 0; i < user.dogs.length; i++) {%>
