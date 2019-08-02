@@ -54,7 +54,7 @@ footer a:hover {
 }
 
 .footer-bar {
-    position: absolute;
+    position: relative;
     height: 50px;
     width: 100%;
     bottom: 0;
@@ -465,4 +465,8 @@ button {
 
 #password{
     border: 1px solid black;
+}
+
+#messageFooter{
+    height: 500px;
 }
