@@ -5,7 +5,7 @@ body {
     position: relative;
 }
 
-h2, h3, h4 {
+h2, h3, h4, h5 {
     font-family: 'Blinker', sans-serif;
     text-align: center;
     margin: 5px 20px;
@@ -95,7 +95,8 @@ footer {
 
 img.show {
     max-width: 500px;
-    border-bottom: 1px solid black;
+    border: 1px solid black;
+    border-top: none;
 }
 
 button {
@@ -215,8 +216,6 @@ button {
 #icons {
     float: right;
 }
-
-
 
 
 :root {
@@ -347,7 +346,12 @@ button {
 
 
 /* Screen optimization */
-
+@media screen and (min-width: 768px) {
+    .message-list {
+        width: 600px;
+        margin: 8px auto;
+    }
+}
 
 /* iPhone 6/7/8 Plus & X */
 @media screen and (max-width: 414px) {
