@@ -6,23 +6,23 @@ const Dog     = require("../models/dogs");
 const Request   = require("../models/requests");
 
 //List of all users
-router.get('/',(req,res)=>{
-    if(req.session.logged === true){
-        req.session.authorIndexView+=1;
-    }
-    User.find({},(err,foundUser)=>{
-        try{
-            res.render('users/index.ejs',{
-                user: foundUser,
-                isLogged: req.session.logged,
-                username: req.session.username,
-                userId : req.session.userId
-            })
-        } catch(err){
-            res.send(err)
-        }
-    })
-})
+// router.get('/',(req,res)=>{
+//     if(req.session.logged === true){
+//         req.session.authorIndexView+=1;
+//     }
+//     User.find({},(err,foundUser)=>{
+//         try{
+//             res.render('users/index.ejs',{
+//                 user: foundUser,
+//                 isLogged: req.session.logged,
+//                 username: req.session.username,
+//                 userId : req.session.userId
+//             })
+//         } catch(err){
+//             res.send(err)
+//         }
+//     })
+// })
 
 //registration 
 router.get("/register",(req,res)=>{
