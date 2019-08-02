@@ -54,7 +54,7 @@ footer a:hover {
 }
 
 .footer-bar {
-    position: relative;
+    position: absolute;
     height: 50px;
     width: 100%;
     bottom: 0;
