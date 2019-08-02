@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="/css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lobster|Blinker:600|Baloo+Da|Pacifico|Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Blinker:600|Noto+Sans|Pacifico|Rubik&display=swap" rel="stylesheet">
 
   </head>
   <body>
@@ -26,13 +26,13 @@
       <div class="flex-box-user" id="personalInfo">
         <h4>Info</h4>
         <ul>
-          <li>Name: <%=user.name%></li>
-          <li>Username: <%=user.username%></li>
-          <li>Email: <%=user.email%></li>
-          <li>Phone Number: <%=user.phone%></li>
-          <li>Address: <%=user.location%></li>
+          <li>Name : <b><i><%=user.name%></i></b></li>
+          <li>Username : <b><i><%=user.username%></i></b></li>
+          <li>Email : <b><i><%=user.email%></i></b></li>
+          <li>Phone Number : <b><i><%=user.phone%></i></b></li>
+          <li>Address : <b><i><%=user.location%></i></b></li>
+        <a href="/users/<%=user._id%>/edit" class="btn btn-lg btn-secondary" id="edit-user">Edit</a>
         </ul>
-        <a id="userShowInfoEdit" href="/users/<%=user._id%>/edit" class="btn btn-lg btn-secondary">Edit</a>
       </div>
     </div><br/>
 

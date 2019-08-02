@@ -6,58 +6,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script defer src="js/app.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Lobster|Blinker:600|Baloo+Da|Pacifico|Rubik&display=swap" rel="stylesheet">
-
-    <title>Index Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Blinker:600|Noto+Sans|Pacifico|Rubik&display=swap" rel="stylesheet">
+    <title>Tindawg</title>
   </head>
   <body>
-        <header>
-            <h1><a class="logo" href="/dogs">Tindawg</a></h1>
-        </header>
-        <main>
+    <header>
+      <h1><a class="logo" href="/dogs">Tindawg</a></h1>
+    </header>
+    <main>
 
-            <%  if(isLogged===false){%>
-            <%- include partials/loggedOutNav.ejs%>
-            <%}else{%>
-            <%- include partials/loggedInNav.ejs%>
-            <%}%>
-        
+        <%  if(isLogged===false){%>
+        <%- include partials/loggedOutNav.ejs%>
+        <%}else{%>
+        <%- include partials/loggedInNav.ejs%>
+        <%}%>
             
-<div id="alertError" class="alert alert-warning alert-dismissible fade <%= message ? 'show' : 'hidden' %>" role="alert">
-  <span id="errorMessage"><%= message %></span>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+        <div id="alertError" class="alert alert-warning alert-dismissible fade <%= message ? 'show' : 'hidden' %>" role="alert">
+        <span id="errorMessage"><%= message %></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
 
-<div class="container">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
-          <div class="card-body">
-            <h5 class="card-title text-center">Log In</h5>
-            <form action="/users/login" method="POST" class="form-signin">
-              <div class="form-label-group">
-                <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
-                <label for="inputUsername">Username</label>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+              <div class="card card-signin my-5">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Log In</h5>
+                  <form action="/users/login" method="POST" class="form-signin">
+                  <div class="form-label-group">
+                    <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus>
+                    <label for="inputUsername">Username</label>
+                  </div>
+
+                    <div class="form-label-group">
+                      <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+                      <label for="inputPassword">Password</label>
+                    </div>
+
+                  <button id="logInBtn" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log in</button>
+                  </form>
+                </div>
               </div>
-
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
-              </div>
-
-              <button id="logInBtn" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Log in</button>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 
 <a href="/users/register">Register</a>
-
-
 
         </main>
 

@@ -1,13 +1,18 @@
 body {
     background: linear-gradient(90deg, rgba(238,174,202,0.7) 0%, rgba(148,187,233,0.7) 100%);
-    font-family: 'Blinker', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     min-height: 100vh;
     position: relative;
 }
 
 h2, h3, h4 {
+    font-family: 'Blinker', sans-serif;
     text-align: center;
     margin: 5px 20px;
+}
+
+a, button {
+    font-family: 'Blinker', sans-serif;
 }
 
 main {
@@ -38,10 +43,14 @@ nav a, footer a {
     letter-spacing: 1px;
 }
 
-nav a:hover, footer a:hover {
+nav a:hover {
     text-decoration: none;
     color: black;
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+footer a:hover {
+    text-decoration: none;
 }
 
 .footer-bar {
@@ -144,8 +153,16 @@ button {
 
 #personalInfo {
     background-color: rgba(241, 241, 241);
+    display: block;
 }
 
+#edit-user {
+    display: block;
+}
+
+.edit-user-card {
+    margin: 10px 0 60px;
+}
 .request-card {
     background-color: rgba(241, 241, 241);
     text-align: center;
@@ -190,6 +207,13 @@ button {
     border:none;
 }
 
+#copyright {
+    float: left;
+}
+
+#icons {
+    float: right;
+}
 
 
 
@@ -320,16 +344,23 @@ button {
 }
 
 
+
 /* Screen optimization */
 
 
 /* iPhone 6/7/8 Plus & X */
 @media screen and (max-width: 414px) {
     body {
-        font-size: 20px;
+        font-size: 16px;
     }
-    nav {
-        font-size: 1rem;
+    .navbar {
+        font-size: 1.6rem;
+        display: inline-block;
+        padding: 0;
+        text-align: center;
+    }
+    h1 {
+        font-size: 3.5rem;
     }
     #dogsCarousel {
         height: 300px;
@@ -349,6 +380,16 @@ button {
      margin: 5px 10px;
      padding: 0;
     }
+    .update-button {
+        width: 85%;
+    }
+    #copyright {
+        font-size: 0.75rem;
+        float: none;
+    }
+    #icons {
+        display: none;
+    }
 }
 
 /* Regular sized iPhones */
@@ -356,8 +397,11 @@ button {
     body {
         font-size: 14px;
     }
-    nav {
+    .navbar {
         font-size: 1rem;
+    }
+    #copyright {
+        font-size: 0.6rem;
     }
     #dogsCarousel {
         height: 300px;
@@ -376,6 +420,13 @@ button {
     .card-body, .dog-flex-box, .btn {
         margin: 0;
         padding: 0;
+    }
+    #edit-button, #delete-button {
+        display: inline-table;
+        width: 80%;
+    }
+    .mt-5, .my-5 {
+        margin-top: 0 !important;
     }
 }
 
