@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tindawg</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Blinker:600|Baloo+Da|Pacifico|Rubik&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <header>
+        <h1><a class="logo" href="/dogs">Tindawg</a></h1>
+    </header>
+
+<%  if(isLogged===false){%>
+    <%- include ../partials/loggedOutNav.ejs%>
+    <%}else{%>
+    <%- include ../partials/loggedInNav.ejs%>
+    <%}%>
+
+      <h2>Requests</h2>
+    <main>
+
+
+
+
+
+<div class="accordion" id="accordionExample">
+<% for (let i = 0; i < request.requests.length; i++) {%>
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse<%=i%>" aria-expanded="true" aria-controls="collapseOne">
+          <%=request.requests[i].name%>
+        </button>
+      </h2>
+    </div>
+    <div id="collapse<%=i%>" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        Requestor: <%=request.requests[i].requestorName%><br/>
+        Email: <%=request.requests[i].requestorEmail%><br/>
+        Phone: <%=request.requests[i].requestorPhone%><br/>
+        Message: <%=request.requests[i].requestorMessage%><br/>      
+    </div>
+    <div class="card-footer">
+        <form action="/users/requests/<%=request.requests[i]._id%>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-dark">Delete</button>
+        </form>
+    </div>
+  </div>
+  <%}%>
+</div>
+
+
+
+
+
+  
+    
+
+    </main>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

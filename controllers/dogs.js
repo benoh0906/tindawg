@@ -97,7 +97,7 @@ router.get("/:id", async (req, res) => {
             name: req.session.name,
             location:req.session.location,
             phone: req.session.phone,
-            email: req.session.email
+            email: req.session.email,
 
         });
     } catch(err) {
