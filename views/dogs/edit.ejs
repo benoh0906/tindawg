@@ -7,101 +7,91 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Blinker:600|Noto+Sans|Pacifico|Rubik&display=swap" rel="stylesheet">
-
   </head>
   <body>
     <header>
         <h1><a class="logo" href="/dogs">Tindawg</a></h1>
     <%- include ../partials/loggedInNav.ejs%> 
-      
     </header>
-    <main>
+  <main>
 
+  <div class="container dog-edit-container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">Edit Dog Info</div>
+          <div id="addDogBody" class="card-body">
 
-
-
-<div class="container dog-edit-container">
-<div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header">Edit Dog Info</div>
-                            <div id="addDogBody" class="card-body">
-
-                                <form action="/dogs/<%=dog._id%>?_method=PUT" method="post" class="form-horizontal">
-
-                                    <div class="form-group">
-                                        <label for="name" class="cols-sm-2 control-label">Name</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="name" id="name" value="<%=dog.name%>" placeholder="Enter Dog Name" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="gender" class="cols-sm-2 control-label">Gender</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                                <select name="gender" class="form-control" value="<%=dog.gender%>" name="gender" id="gender">
-                                                  <option value="male">Male</option>
-                                                  <option value="female">Female</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="breed" class="cols-sm-2 control-label">Breed</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="breed" id="breed" value="<%=dog.breed%>" placeholder="Enter Dog Breed" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="age" class="cols-sm-2 control-label">Age</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                <input type="number" class="form-control"  min="0" name="age" id="age" value="<%=dog.age%>" placeholder="Enter Dog Age" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="img" class="cols-sm-2 control-label">Image URL</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="img" id="img" value="<%=dog.img%>" placeholder="Enter Dog Image URL" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="description" class="cols-sm-2 control-label">Description</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                                <textarea type="text" class="form-control" name="description" id="description"><%=dog.description%></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                          
-                                    <div class="form-group ">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Add</button>
-                                    </div>
-
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
+            <form action="/dogs/<%=dog._id%>?_method=PUT" method="post" class="form-horizontal">
+              <div class="form-group">
+                <label for="name" class="cols-sm-2 control-label">Name</label>
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" name="name" id="name" value="<%=dog.name%>" placeholder="Enter Dog Name" />
+                  </div>
                 </div>
+              </div>
+              <div class="form-group">
+                <label for="gender" class="cols-sm-2 control-label">Gender</label>
+                <div class="cols-sm-10">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                    <select name="gender" class="form-control" value="<%=dog.gender%>" name="gender" id="gender">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="breed" class="cols-sm-2 control-label">Breed</label>
+                  <div class="cols-sm-10">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                      <input type="text" class="form-control" name="breed" id="breed" value="<%=dog.breed%>" placeholder="Enter Dog Breed" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="age" class="cols-sm-2 control-label">Age</label>
+                  <div class="cols-sm-10">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                      <input type="number" class="form-control"  min="0" name="age" id="age" value="<%=dog.age%>" placeholder="Enter Dog Age" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="img" class="cols-sm-2 control-label">Image URL</label>
+                  <div class="cols-sm-10">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                      <input type="text" class="form-control" name="img" id="img" value="<%=dog.img%>" placeholder="Enter Dog Image URL" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="description" class="cols-sm-2 control-label">Description</label>
+                  <div class="cols-sm-10">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                      <textarea type="text" class="form-control" name="description" id="description"><%=dog.description%></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group ">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Add</button>
+                </div>
+              </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
-
-
-    </main>
+</main>
 
     <%- include ../partials/footer.ejs%>
 
