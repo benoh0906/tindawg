@@ -24,7 +24,7 @@ const Request   = require("../models/requests");
 //     })
 // })
 
-//registration 
+//Registration 
 router.get("/register",(req,res)=>{
     res.render("users/register.ejs", {
         message : req.session.message,
@@ -32,34 +32,27 @@ router.get("/register",(req,res)=>{
     })
 });
 
-
-router.post("/register", 
-
-async (req, res) => {
+router.post("/register", async (req, res) => {
     const password = req.body.password;
     const passConfirm = req.body.confirmPassword;
     if (password !== passConfirm){
-        req.session.message = "Password don't match"
+        req.session.message = "Passwords don't match"
         res.redirect("/users/register")
     } else {
         const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-        
-        console.log(hashedPassword);
-    
         req.body.password = hashedPassword;
     
         try {
             const createdUser = await User.create(req.body);
             console.log(createdUser, "<--- Created User");
     
-
             req.session.message = "Account Created. Please Log In"
             res.redirect("/");
-         } catch (err) {
-             console.log(err)
+        } catch (err) {
+            console.log(err)
             req.session.message = "Wrong Input"
             res.redirect("/users/register");
-         }
+        }
     }
 });
 
@@ -74,11 +67,11 @@ router.post("/login", async (req, res) => {
         if (bcrypt.compareSync(req.body.password, foundUser.password)) {
             req.session.userId = foundUser._id;
             req.session.username = foundUser.username;
-            req.session.name=foundUser.name;
-            req.session.email=foundUser.email;
-            req.session.phone=foundUser.phone;
-            req.session.location=foundUser.location;
-            req.session.password=foundUser.password;
+            req.session.name = foundUser.name;
+            req.session.email = foundUser.email;
+            req.session.phone = foundUser.phone;
+            req.session.location = foundUser.location;
+            req.session.password = foundUser.password;
             req.session.logged = true;
             res.redirect(`/users/${req.session.userId}`);
             req.session.message = ""
@@ -97,8 +90,6 @@ router.post("/login", async (req, res) => {
     }
 });
 
-
-
 //Change Password
 router.get("/:id/edit/password", async (req, res) => {
     
@@ -116,7 +107,6 @@ router.get("/:id/edit/password", async (req, res) => {
         res.send(err);
     }
 });
-
 
 router.put("/:id/edit/password", async (req, res) => {
     const oldPassword = req.body.password;
@@ -144,7 +134,6 @@ router.put("/:id/edit/password", async (req, res) => {
                 }
             }
 
-        
         } else {
             
             req.session.message = "Old Password incorrect";
@@ -155,12 +144,9 @@ router.put("/:id/edit/password", async (req, res) => {
         req.session.message = "Username Does Not Exist";
         res.redirect(`/users/${req.params.id}/edit/password`);
     }
-
-    
 }); 
 
 //Edit info
-
 router.get("/:id/edit", async (req, res) => {
     try {
         const findUser = await User.findById(req.params.id);
@@ -174,8 +160,6 @@ router.get("/:id/edit", async (req, res) => {
         res.send(err);
     }
 });
-
-
 
 router.put("/:id", async (req, res) => {
     try {
@@ -192,9 +176,7 @@ router.put("/:id", async (req, res) => {
     }
 }); 
 
-
-//log out
-
+//Log out
 router.get("/logout", async (req, res) => {
     try{
         const loggingOut = await req.session.destroy()
@@ -205,8 +187,7 @@ router.get("/logout", async (req, res) => {
 });
 
 
-//delete Request
-
+//Delete Request
 router.delete('/requests/:id', async (req, res) => {
     try {
       const findRemoveReq = await Request.findOneAndDelete({_id: req.params.id});
@@ -221,10 +202,7 @@ router.delete('/requests/:id', async (req, res) => {
     }
 });
 
-
-
-//delete user
-
+//Delete user
 router.delete('/:id', async (req, res) => {
     try {
       const deletedUser = await User.findOneAndDelete({_id: req.params.id});
@@ -239,10 +217,7 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-
-
-
-// show route
+//Show route
 router.get('/:id', async (req, res) => {
     try{
         const findUser = await User.findById(req.params.id).populate('dogs').exec();
@@ -263,8 +238,7 @@ router.get('/:id', async (req, res) => {
 });
 
 
-//make requests
-
+//Make requests
 router.post("/:id/request", async (req, res) => {
     try {
         const requestFrom = await Request.create(req.body)
@@ -280,8 +254,7 @@ router.post("/:id/request", async (req, res) => {
     } 
   });
 
-//show requests
-
+//Show requests
 router.get('/:id/request', async (req, res) => {
     try{
         const findUser = await User.findById(req.params.id).populate('dogs').exec();

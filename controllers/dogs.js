@@ -1,6 +1,5 @@
 const express = require("express");
 const router  = express.Router();
-const bcrypt  = require("bcryptjs");
 const User    = require("../models/users");
 const Dog     = require("../models/dogs");
 const Request   = require("../models/requests");
@@ -24,8 +23,7 @@ router.get("/", async (req, res) => {
 });
 
 
-//create dogs
-
+//Create dogs
 router.get("/new", async (req, res) => {
     try {
         const allUsers = await User.find({});
@@ -55,9 +53,7 @@ router.post("/", async (req, res) => {
     } 
   });
 
-//delete dogs
-
-
+//Delete dogs
 router.delete('/:id', async (req, res)=>{
     try{
     const findRemoveDog = await Dog.findByIdAndRemove(req.params.id)
@@ -71,12 +67,10 @@ router.delete('/:id', async (req, res)=>{
     } catch (err){
         res.send(err)
     }
-
   });
 
 
-//show dogs
-
+//Show dogs
 router.get("/:id", async (req, res) => {
     try {
         const findUser = await User.findOne({'dogs': req.params.id}).populate('dogs');

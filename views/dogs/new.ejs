@@ -1,115 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Tindawg</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link href="/css/style.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lobster|Blinker:600|Noto+Sans|Pacifico|Rubik&display=swap" rel="stylesheet">
+  <head>
+    <title>Tindawg</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Blinker:600|Noto+Sans|Pacifico|Rubik&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1><a class="logo" href="/dogs">Tindawg</a></h1>
+    </header>
 
-    </head>
-    <body>
-      <header>
-        <h1><a class="logo" href="/dogs">Tindawg</a></h1>
-      </header>
+  <%- include ../partials/loggedInNav.ejs%> 
 
-    <%- include ../partials/loggedInNav.ejs%> 
+  <main>
 
-      <main>
-
-
-
-
-
-<div class="container dog-add-container">
-<div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header">Adding a Dog</div>
-                            <div id="addDogBody" class="card-body">
-
-                                <form action="/dogs" method="POST" class="form-horizontal">
-
-                                    <div class="form-group">
-                                        <label for="name" class="cols-sm-2 control-label">Name</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter Dog Name" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="gender" class="cols-sm-2 control-label">Gender</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                                <select name="gender" class="form-control" name="gender" id="gender">
-                                                  <option value="male">Male</option>
-                                                  <option value="female">Female</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="breed" class="cols-sm-2 control-label">Breed</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="breed" id="breed" placeholder="Enter Dog Breed" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="age" class="cols-sm-2 control-label">Age</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                <input type="number" class="form-control"  min="0" name="age" id="age" placeholder="Enter Dog Age" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="img" class="cols-sm-2 control-label">Image URL</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="img" id="img" value="/img/default1.jpg" placeholder="Enter Dog Image URL" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="description" class="cols-sm-2 control-label">Description</label>
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                                <textarea type="text" class="form-control" name="description" id="description" placeholder="Describe Your Dog"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                          
-                                    <div class="form-group ">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Add</button>
-                                    </div>
-
-                                </form>
-                            </div>
-
-                        </div>
+    <div class="container dog-add-container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">Add a Dog</div>
+              <div id="addDogBody" class="card-body">
+                <form action="/dogs" method="POST" class="form-horizontal">
+                  <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Name</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Dog Name" />
+                      </div>
                     </div>
-                </div>
-</div>
-
-
-      </main>
-
-
+                  </div>
+                  <div class="form-group">
+                    <label for="gender" class="cols-sm-2 control-label">Gender</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                        <select name="gender" class="form-control" name="gender" id="gender">
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="breed" class="cols-sm-2 control-label">Breed</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="breed" id="breed" placeholder="Enter Dog Breed" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="age" class="cols-sm-2 control-label">Age</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                        <input type="number" class="form-control"  min="0" name="age" id="age" placeholder="Enter Dog Age" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="img" class="cols-sm-2 control-label">Image URL</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                          <input type="text" class="form-control" name="img" id="img" value="/img/default1.jpg" placeholder="Enter Dog Image URL" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="description" class="cols-sm-2 control-label">Description</label>
+                    <div class="cols-sm-10">
+                      <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                        <textarea type="text" class="form-control" name="description" id="description" placeholder="Describe Your Dog"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                        
+                  <div class="form-group ">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Add</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
       <%- include ../partials/footer.ejs%>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>

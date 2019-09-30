@@ -223,7 +223,6 @@ button {
     --input-padding-y: .75rem;
   }
   
-  
   .card-signin {
     border: 0;
     border-radius: 1rem;
@@ -345,7 +344,7 @@ button {
 
 
 
-/* Screen optimization */
+/* MOBILE OPTIMIZATION */
 @media screen and (min-width: 768px) {
     .message-list {
         width: 600px;
@@ -398,7 +397,7 @@ button {
 }
 
 /* Regular sized iPhones */
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
     body {
         font-size: 14px;
     }
@@ -433,6 +432,9 @@ button {
     .mt-5, .my-5 {
         margin-top: 0 !important;
     }
+    .footer-bar {
+        visibility: hidden;
+    }
 }
 
 .show{
@@ -448,7 +450,7 @@ button {
 }
 
 .dog-add-container{
-    margin: 30px 0;
+    margin: 40px 0 80px 0;
 
 }
 .dog-edit-container{
