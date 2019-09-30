@@ -27,7 +27,7 @@ This project is a full-stack development project of Jungbin Oh and Jason Wong. T
 
 ## Wireframe
 
-### Log In & Regristration
+### Log In & Registration
 
 ![main screenshot](screenshot/main.png)
 
